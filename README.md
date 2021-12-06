@@ -18,7 +18,7 @@ Note that some of these values can be empty (e.g. the timestamp might be unknown
 # Getting started
 To get started first download the repository
 
-```git clone https://github.com/gmberton/project_aml_vg```
+```git clone https://github.com/gmberton/project_vg```
 
 then download Pitts30k [(link)](https://drive.google.com/file/d/1QpF5nO1SivJ5QOx1kkhoCeMqFvvrksey/view?usp=sharing), and extract the zip file.
 Then install the required packages
@@ -27,7 +27,7 @@ Then install the required packages
 
 and finally run
 
-```python3 train.py --datasets_path path/to/folder/containing/pitts30k```
+```python3 train.py --datasets_folder path/to/folder/containing/pitts30k```
 
 This will train, validate, and test the model on Pitts30k.
 If the previous steps were executed correctly, training will take only a few of hours, and end with a recall@1 (R@1) of roughly 60%. Results should heavily improve using GeM or NetVLAD layer.
