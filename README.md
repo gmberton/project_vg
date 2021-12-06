@@ -2,7 +2,7 @@
 
 This repository provides a ready-to-use visual geo-localization (VG) pipeline, which you can use to train a model on a given dataset.
 Specifically, it implements a ResNet-18 followed by an average pooling, which can be trained on VG datasets such as Pitts30k, using negative mining and triplet loss as explained in the [NetVLAD paper](https://arxiv.org/abs/1511.07247).
-You will have to replace the average pooling with a GeM layer and a NetVLAD layer (see the [project's document](https://docs.google.com/document/d/1QUYjZqHA4csIXAUjGm73ywcSi1tRmvpQMMurfeVIzcc/edit#)).
+You will have to replace the average pooling with a GeM layer and a NetVLAD layer.
 
 
 # Datasets
