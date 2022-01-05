@@ -7,8 +7,10 @@ def parse_arguments():
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     # Training parameters
 
-    parser.add_argument("--use_netvlad",
-                        help="Specify if NetVlad must be used")
+    parser.add_argument("--use_netvlad", type=bool,
+                        help="Specify if NetVLAD must be used")
+    parser.add_argument("--netvlad_clusters", type=int, default=64,
+                        help="Clusters number for NetVLAD")
 
     parser.add_argument("--train_batch_size", type=int, default=4,
                         help="Number of triplets (query, pos, negs) in a batch. Each triplet consists of 12 images")

@@ -16,7 +16,7 @@ class GeoLocalizationNet(nn.Module):
         super().__init__()
         self.backbone = get_backbone(args)
         if args.use_netvlad:
-            self.aggregation = NetVLAD()
+            self.aggregation = NetVLAD(num_clusters=args.netvlad_clusters)
         else:
             self.aggregation = nn.Sequential(L2Norm(),
                                              torch.nn.AdaptiveAvgPool2d(1),
@@ -39,7 +39,10 @@ def get_backbone(args):
         "Train only conv4 of the ResNet-18 (remove conv5), freeze the previous ones")
     layers = list(backbone.children())[:-3]
     backbone = torch.nn.Sequential(*layers)
-    args.features_dim = 256  # Number of channels in conv4
+    if args.netvlad_clusters:
+        args.features_dim = 256 * args.netvlad_clusters
+    else:
+        args.features_dim = 256  # Number of channels in conv4
     return backbone
 
 
