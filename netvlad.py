@@ -10,11 +10,7 @@ import numpy as np
 class NetVLAD(nn.Module):
     """NetVLAD layer implementation"""
 
-<<<<<<< HEAD
-    def __init__(self, num_clusters=8, dim=256,
-=======
     def __init__(self, num_clusters=64, dim=256,
->>>>>>> 0794819d3d8d7c5db10f0ab16289cd26c8c26928
                  normalize_input=True, vladv2=False):
         """
         Args:
