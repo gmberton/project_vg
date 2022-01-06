@@ -1,9 +1,0 @@
-2022-01-05 14:36:35   Arguments: Namespace(cache_refresh_rate=1000, datasets_folder='./', device='cuda', epochs_num=50, exp_name='default', features_dim=2048, infer_batch_size=16, lr=1e-05, margin=0.1, neg_samples_num=1000, negs_num_per_query=10, num_workers=8, output_folder='runs/default/2022-01-05_14-36-34', patience=3, queries_per_epoch=5000, recall_values=[1, 5, 10, 20], seed=0, train_batch_size=4, train_positives_dist_threshold=10, use_netvlad='true', val_positive_dist_threshold=25)
-2022-01-05 14:36:35   The outputs are being saved in runs/default/2022-01-05_14-36-34
-2022-01-05 14:36:35   Using 1 GPUs and 6 CPUs
-2022-01-05 14:36:39   There are 96 queries without any positives within the training set. They won't be considered as they're useless for training.
-2022-01-05 14:36:39   Train query set: < TripletsDataset, pitts30k - #database: 10000; #queries: 7320 >
-2022-01-05 14:36:42   Val set: < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >
-2022-01-05 14:36:46   Test set: < BaseDataset, pitts30k - #database: 10000; #queries: 6816 >
-2022-01-05 14:36:48   Output dimension of the model is 2048
-2022-01-05 14:36:48   Start training epoch: 00
