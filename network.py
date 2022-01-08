@@ -1,14 +1,10 @@
-
 import torch
 import logging
 import torchvision
 import torch.nn as nn
 import torch.nn.functional as F
-<<<<<<< Updated upstream
-=======
 from netvlad import NetVLAD
 from gem import GeM
->>>>>>> Stashed changes
 
 
 class GeoLocalizationNet(nn.Module):
@@ -16,14 +12,11 @@ class GeoLocalizationNet(nn.Module):
     The backbone is a (cropped) ResNet-18, and the aggregation is a L2
     normalization followed by max pooling.
     """
+
     def __init__(self, args):
         super().__init__()
         self.backbone = get_backbone(args)
-<<<<<<< Updated upstream
-        self.aggregation = nn.Sequential(L2Norm(),
-                                         torch.nn.AdaptiveAvgPool2d(1),
-                                         Flatten())
-=======
+
         if args.use_gem:
             self.aggregation= GeM(p = args.gem_p, eps = args.gem_eps)
         if args.use_netvlad:
@@ -33,7 +26,6 @@ class GeoLocalizationNet(nn.Module):
                                              torch.nn.AdaptiveAvgPool2d(1),
                                              Flatten())
 
->>>>>>> Stashed changes
     def forward(self, x):
         x = self.backbone(x)
         x = self.aggregation(x)
@@ -47,25 +39,30 @@ def get_backbone(args):
             break
         for params in child.parameters():
             params.requires_grad = False
-    logging.debug("Train only conv4 of the ResNet-18 (remove conv5), freeze the previous ones")
+    logging.debug(
+        "Train only conv4 of the ResNet-18 (remove conv5), freeze the previous ones")
     layers = list(backbone.children())[:-3]
     backbone = torch.nn.Sequential(*layers)
-    args.features_dim = 256  # Number of channels in conv4
+    if args.use_netvlad:
+        args.features_dim = 256 * args.netvlad_clusters
+    else:
+        args.features_dim = 256  # Number of channels in conv4
     return backbone
 
 
 class Flatten(torch.nn.Module):
     def __init__(self):
         super().__init__()
+
     def forward(self, x):
         assert x.shape[2] == x.shape[3] == 1
-        return x[:,:,0,0]
+        return x[:, :, 0, 0]
 
 
 class L2Norm(nn.Module):
     def __init__(self, dim=1):
         super().__init__()
         self.dim = dim
+
     def forward(self, x):
         return F.normalize(x, p=2, dim=self.dim)
-
