@@ -4,6 +4,11 @@ import logging
 import torchvision
 import torch.nn as nn
 import torch.nn.functional as F
+<<<<<<< Updated upstream
+=======
+from netvlad import NetVLAD
+from gem import GeM
+>>>>>>> Stashed changes
 
 
 class GeoLocalizationNet(nn.Module):
@@ -14,9 +19,21 @@ class GeoLocalizationNet(nn.Module):
     def __init__(self, args):
         super().__init__()
         self.backbone = get_backbone(args)
+<<<<<<< Updated upstream
         self.aggregation = nn.Sequential(L2Norm(),
                                          torch.nn.AdaptiveAvgPool2d(1),
                                          Flatten())
+=======
+        if args.use_gem:
+            self.aggregation= GeM(p = args.gem_p, eps = args.gem_eps)
+        if args.use_netvlad:
+            self.aggregation = NetVLAD(num_clusters=args.netvlad_clusters)
+        else:
+            self.aggregation = nn.Sequential(L2Norm(),
+                                             torch.nn.AdaptiveAvgPool2d(1),
+                                             Flatten())
+
+>>>>>>> Stashed changes
     def forward(self, x):
         x = self.backbone(x)
         x = self.aggregation(x)
