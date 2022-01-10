@@ -6,7 +6,6 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description="Benchmarking Visual Geolocalization",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     # Training parameters
-
     parser.add_argument("--use_netvlad", type=bool,
                         help="Specify if NetVLAD must be used")
     
@@ -21,6 +20,13 @@ def parse_arguments():
 
     parser.add_argument("--netvlad_clusters", type=int, default=64,
                         help="Clusters number for NetVLAD")
+
+    parser.add_argument("--use_gem", type=bool,
+                        help="Specify if GeM must be used")
+    parser.add_argument("--gem_p", type=int, default=3,
+                        help="Power for GeM")
+    parser.add_argument("--gem_eps", type=int, default=0.000001,
+                        help="Epsilon for GeM")
 
     parser.add_argument("--train_batch_size", type=int, default=4,
                         help="Number of triplets (query, pos, negs) in a batch. Each triplet consists of 12 images")

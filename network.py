@@ -4,6 +4,7 @@ import torchvision
 import torch.nn as nn
 import torch.nn.functional as F
 from netvlad import NetVLAD
+from gem import GeM
 
 
 class GeoLocalizationNet(nn.Module):
@@ -15,6 +16,9 @@ class GeoLocalizationNet(nn.Module):
     def __init__(self, args):
         super().__init__()
         self.backbone = get_backbone(args)
+
+        if args.use_gem:
+            self.aggregation= GeM(p = args.gem_p, eps = args.gem_eps)
         if args.use_netvlad:
             self.aggregation = NetVLAD(num_clusters=args.netvlad_clusters)
         else:
