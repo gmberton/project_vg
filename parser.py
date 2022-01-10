@@ -9,6 +9,16 @@ def parse_arguments():
 
     parser.add_argument("--use_netvlad", type=bool,
                         help="Specify if NetVLAD must be used")
+    
+    parser.add_argument("--use_sgd", type=bool,
+                        help="Specify if optimizer sgd must be used")        
+
+    parser.add_argument("--use_adagrad", type=bool,
+                        help="Specify if optimizer adagrad must be used")                
+    
+    parser.add_argument("--momentum", type=float, default=0.9,
+                        help="Specify momentum for SGD")             
+
     parser.add_argument("--netvlad_clusters", type=int, default=64,
                         help="Clusters number for NetVLAD")
 
