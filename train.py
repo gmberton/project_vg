@@ -45,7 +45,16 @@ model = network.GeoLocalizationNet(args)
 model = model.to(args.device)
 
 #### Setup Optimizer and Loss
-optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
+if args.use_sgd:
+    optimizer = torch.optim.SGD(model.parameters(), lr=args.lr, momentum=args.momentum)
+    print("Using SGD")
+elif args.use_adagrad:
+    optimizer = torch.optim.Adagrad(model.parameters(), lr=args.lr)
+    print("Using Adagrad")
+else:
+    optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
+    print("Using Adam")
+
 criterion_triplet = nn.TripletMarginLoss(margin=args.margin, p=2, reduction="sum")
 
 best_r5 = 0

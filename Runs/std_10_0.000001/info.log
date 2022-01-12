@@ -1,0 +1,51 @@
+2022-01-06 18:07:20   Arguments: Namespace(use_netvlad=None, netvlad_clusters=64, train_batch_size=4, infer_batch_size=16, margin=0.1, epochs_num=10, patience=3, lr=1e-06, cache_refresh_rate=1000, queries_per_epoch=5000, negs_num_per_query=10, neg_samples_num=1000, seed=0, device='cuda', num_workers=8, val_positive_dist_threshold=25, train_positives_dist_threshold=10, recall_values=[1, 5, 10, 20], datasets_folder='./Data', exp_name='default', output_folder='runs/default/2022-01-06_18-07-20')
+2022-01-06 18:07:20   The outputs are being saved in runs/default/2022-01-06_18-07-20
+2022-01-06 18:07:20   Using 1 GPUs and 12 CPUs
+2022-01-06 18:07:21   There are 96 queries without any positives within the training set. They won't be considered as they're useless for training.
+2022-01-06 18:07:21   Train query set: < TripletsDataset, pitts30k - #database: 10000; #queries: 7320 >
+2022-01-06 18:07:21   Val set: < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >
+2022-01-06 18:07:21   Test set: < BaseDataset, pitts30k - #database: 10000; #queries: 6816 >
+2022-01-06 18:07:25   Output dimension of the model is 256
+2022-01-06 18:07:25   Start training epoch: 00
+2022-01-06 18:14:38   Finished epoch 00 in 0:07:13, average epoch triplet loss = 0.0847
+2022-01-06 18:15:34   Recalls on val set < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >: R@1: 33.3, R@5: 53.6, R@10: 62.5, R@20: 72.5
+2022-01-06 18:15:34   Improved: previous best R@5 = 0.0, current R@5 = 53.6
+2022-01-06 18:15:34   Start training epoch: 01
+2022-01-06 18:22:44   Finished epoch 01 in 0:07:10, average epoch triplet loss = 0.0817
+2022-01-06 18:23:39   Recalls on val set < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >: R@1: 41.2, R@5: 62.8, R@10: 71.8, R@20: 80.2
+2022-01-06 18:23:40   Improved: previous best R@5 = 53.6, current R@5 = 62.8
+2022-01-06 18:23:40   Start training epoch: 02
+2022-01-06 18:30:29   Finished epoch 02 in 0:06:49, average epoch triplet loss = 0.0805
+2022-01-06 18:31:19   Recalls on val set < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >: R@1: 46.4, R@5: 68.5, R@10: 77.2, R@20: 84.7
+2022-01-06 18:31:20   Improved: previous best R@5 = 62.8, current R@5 = 68.5
+2022-01-06 18:31:20   Start training epoch: 03
+2022-01-06 18:37:46   Finished epoch 03 in 0:06:25, average epoch triplet loss = 0.0799
+2022-01-06 18:38:34   Recalls on val set < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >: R@1: 50.0, R@5: 72.2, R@10: 80.4, R@20: 87.2
+2022-01-06 18:38:34   Improved: previous best R@5 = 68.5, current R@5 = 72.2
+2022-01-06 18:38:34   Start training epoch: 04
+2022-01-06 18:45:03   Finished epoch 04 in 0:06:28, average epoch triplet loss = 0.0797
+2022-01-06 18:45:53   Recalls on val set < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >: R@1: 53.0, R@5: 74.6, R@10: 82.1, R@20: 88.3
+2022-01-06 18:45:53   Improved: previous best R@5 = 72.2, current R@5 = 74.6
+2022-01-06 18:45:53   Start training epoch: 05
+2022-01-06 18:52:18   Finished epoch 05 in 0:06:25, average epoch triplet loss = 0.0790
+2022-01-06 18:53:07   Recalls on val set < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >: R@1: 54.5, R@5: 76.1, R@10: 83.3, R@20: 89.2
+2022-01-06 18:53:08   Improved: previous best R@5 = 74.6, current R@5 = 76.1
+2022-01-06 18:53:08   Start training epoch: 06
+2022-01-06 18:59:32   Finished epoch 06 in 0:06:24, average epoch triplet loss = 0.0783
+2022-01-06 19:00:20   Recalls on val set < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >: R@1: 56.2, R@5: 77.7, R@10: 84.5, R@20: 89.8
+2022-01-06 19:00:20   Improved: previous best R@5 = 76.1, current R@5 = 77.7
+2022-01-06 19:00:20   Start training epoch: 07
+2022-01-06 19:06:43   Finished epoch 07 in 0:06:22, average epoch triplet loss = 0.0778
+2022-01-06 19:07:33   Recalls on val set < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >: R@1: 57.2, R@5: 78.6, R@10: 85.0, R@20: 90.5
+2022-01-06 19:07:33   Improved: previous best R@5 = 77.7, current R@5 = 78.6
+2022-01-06 19:07:33   Start training epoch: 08
+2022-01-06 19:13:59   Finished epoch 08 in 0:06:25, average epoch triplet loss = 0.0771
+2022-01-06 19:14:47   Recalls on val set < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >: R@1: 58.2, R@5: 78.9, R@10: 85.4, R@20: 90.9
+2022-01-06 19:14:47   Improved: previous best R@5 = 78.6, current R@5 = 78.9
+2022-01-06 19:14:47   Start training epoch: 09
+2022-01-06 19:21:33   Finished epoch 09 in 0:06:46, average epoch triplet loss = 0.0769
+2022-01-06 19:22:23   Recalls on val set < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >: R@1: 58.8, R@5: 79.6, R@10: 86.0, R@20: 91.1
+2022-01-06 19:22:23   Improved: previous best R@5 = 78.9, current R@5 = 79.6
+2022-01-06 19:22:23   Best R@5: 79.6
+2022-01-06 19:22:23   Trained for 10 epochs, in total in 1:15:02
+2022-01-06 19:23:08   Recalls on < BaseDataset, pitts30k - #database: 10000; #queries: 6816 >: R@1: 57.5, R@5: 77.9, R@10: 84.9, R@20: 89.7
