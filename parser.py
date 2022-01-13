@@ -37,6 +37,8 @@ def parse_arguments():
     parser.add_argument("--exp_name", type=str, default="default",
                         help="Folder name of the current run (saved in ./runs/)")
     
+    parser.add_argument("--head", type=str, default='default', help="What head would you use; 'GEM' or 'NETVLAD'")
+    
     args = parser.parse_args()
     
     if args.queries_per_epoch % args.cache_refresh_rate != 0:

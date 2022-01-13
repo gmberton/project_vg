@@ -4,6 +4,7 @@ import logging
 import torchvision
 import torch.nn as nn
 import torch.nn.functional as F
+from netvlad import NetVLAD
 
 
 class GeoLocalizationNet(nn.Module):
@@ -14,9 +15,18 @@ class GeoLocalizationNet(nn.Module):
     def __init__(self, args):
         super().__init__()
         self.backbone = get_backbone(args)
-        self.aggregation = nn.Sequential(L2Norm(),
+        
+        if args.head == 'NETVLAD':
+            #NetVLAD head
+            logging.info("Using NetVlad network")
+            self.aggregation = nn.Sequential(L2Norm(), NetVLAD())
+        elif args.head == 'GEM':
+            #TODO
+        else:
+            self.aggregation = nn.Sequential(L2Norm(),
                                          torch.nn.AdaptiveAvgPool2d(1),
                                          Flatten())
+        
     def forward(self, x):
         x = self.backbone(x)
         x = self.aggregation(x)
@@ -51,4 +61,3 @@ class L2Norm(nn.Module):
         self.dim = dim
     def forward(self, x):
         return F.normalize(x, p=2, dim=self.dim)
-
