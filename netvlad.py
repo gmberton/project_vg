@@ -33,17 +33,17 @@ class NetVLAD(nn.Module):
         self.centroids = nn.Parameter(torch.rand(num_clusters, dim))
 
     def init_params(self, clsts, traindescs):
-        clstsAssign = clsts / np.linalg.norm(clsts, axis=1, keepdims=True)
-        dots = np.dot(clstsAssign, traindescs.T)
-        dots.sort(0)
-        dots = dots[::-1, :]  # sort, descending
+            clstsAssign = clsts / np.linalg.norm(clsts, axis=1, keepdims=True)
+            dots = np.dot(clstsAssign, traindescs.T)
+            dots.sort(0)
+            dots = dots[::-1, :]  # sort, descending
 
-        self.alpha = (-np.log(0.01) /
-                      np.mean(dots[0, :] - dots[1, :])).item()
-        self.centroids = nn.Parameter(torch.from_numpy(clsts))
-        self.conv.weight = nn.Parameter(torch.from_numpy(
-            self.alpha*clstsAssign).unsqueeze(2).unsqueeze(3))
-        self.conv.bias = None
+            self.alpha = (-np.log(0.01) /
+                          np.mean(dots[0, :] - dots[1, :])).item()
+            self.centroids = nn.Parameter(torch.from_numpy(clsts))
+            self.conv.weight = nn.Parameter(torch.from_numpy(
+                self.alpha*clstsAssign).unsqueeze(2).unsqueeze(3))
+            self.conv.bias = None
 
     def forward(self, x):
         N, C = x.shape[:2]

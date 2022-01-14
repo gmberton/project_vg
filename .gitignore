@@ -4,5 +4,5 @@ Dataset_pitts30k/pitts30k/
 Dataset_st_lucia/st_lucia/
 .DS_Store
 .amlignore*
-Dataset_pitts30k/centroids
+Dataset_pitts30k/centroids*
 .idea
