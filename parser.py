@@ -6,9 +6,10 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description="Benchmarking Visual Geolocalization",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     # Training parameters
+    parser.add_argument("--backbone", type=str,
+                        default="resnet18", choices=["resnet18", "resnet50"])
     parser.add_argument("--use_netvlad", type=bool,
                         help="Specify if NetVLAD must be used")
-    
 
     parser.add_argument("--netvlad_clusters", type=int, default=64,
                         help="Clusters number for NetVLAD")
@@ -23,14 +24,13 @@ def parse_arguments():
                         help="Epsilon for GeM")
 
     parser.add_argument("--use_sgd", type=bool,
-                        help="Specify if optimizer sgd must be used")        
+                        help="Specify if optimizer sgd must be used")
 
     parser.add_argument("--use_adagrad", type=bool,
-                        help="Specify if optimizer adagrad must be used")                
-    
-    parser.add_argument("--momentum", type=float, default=0.9,
-                        help="Specify momentum for SGD")             
+                        help="Specify if optimizer adagrad must be used")
 
+    parser.add_argument("--momentum", type=float, default=0.9,
+                        help="Specify momentum for SGD")
 
     parser.add_argument("--train_batch_size", type=int, default=4,
                         help="Number of triplets (query, pos, negs) in a batch. Each triplet consists of 12 images")
@@ -68,6 +68,13 @@ def parse_arguments():
                         required=True, help="Path with datasets")
     parser.add_argument("--exp_name", type=str, default="default",
                         help="Folder name of the current run (saved in ./runs/)")
+
+    # Test parameters
+    parser.add_argument("--test_dataset_name", type=str,
+                        help="Name for the dataset to use for evaluation")
+
+    parser.add_argument("--test_model_path", type=str,
+                        help="Path for the model to use for evaluation")
 
     args = parser.parse_args()
 

@@ -27,18 +27,4 @@ Then install the required packages
 
 and finally run
 
-`python3 train.py --datasets_folder path/to/folder/containing/pitts30k`
-
-This will train, validate, and test the model on Pitts30k.
-If the previous steps were executed correctly, training will take only a few of hours, and end with a recall@1 (R@1) of roughly 60%. Results should heavily improve using GeM or NetVLAD layer.
-
-To visualize all the parameters that it is possible to set, run
-
-`python3 train.py -h`
-
-# NetVLAD training commands
-
-Follow the same instructions as in the section above.
-
-Then, to train using NetVLAD, run:
-`python3 project_vg/train.py --datasets_folder ./ --use_netvlad True --netvlad_clusters 64 --epochs_num 5`
+`Runs command BRB`
