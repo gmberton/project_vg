@@ -15,24 +15,24 @@
 
 | Max epochs | Num Clusters | LR       | Stopped Early | Optimizer  | Best R@5 Val | Best R@5 Test | Link                                      |
 | ---------- | ------------ | -------- | ------------- | ---------- | ------------ | ------------- | ----------------------------------------- |
-| 15         | 64           | 0.000001 |               | Adam       |              |               | [example](Runs\netvlad_10_0.000001_64)    |
-| 15         | 64           | 0.00001  |               | Adam       |              |               | [example](Runs\netvlad_10_0.00001_64)     |
-| 15         | 64           | 0.0001   |               | Adam       |              |               | [example](Runs\netvlad_10_0.0001_64)      |
-| 15         | 64           | 0.001    |               | Adam       |              |               | [example](Runs\netvlad_10_0.001_64)       |
-| 15         | 64           | best_lr  |               | SGD m=0.9  |              |               | [example](Runs\netvlad_sgd_m_0.9_epoc_10) |
-| 15         | 64           | best_lr  |               | SGD m=0.99 |              |               | [example](Runs\nevlad_sgd_m_0.99_epoc_10) |
-| 15         | 64           | best_lr  |               | Adagrad    |              |               | [example](Runs\netvlad_adagrad_std_10)    |
+| 20         | 64           | 0.000001 |               | Adam       |              |               | [example](Runs\netvlad_10_0.000001_64)    |
+| 20         | 64           | 0.00001  |               | Adam       |              |               | [example](Runs\netvlad_10_0.00001_64)     |
+| 20         | 64           | 0.0001   | Y (7)         | Adam       | 95.9         | 91.9          | [example](Runs\netvlad_20_64_10^-4_adam)  |
+| 20         | 64           | 0.001    | Y (6)         | Adam       | 92.9         | 90.3          | [example](Runs\netvlad_20_64_10^-3_adam)  |
+| 20         | 64           | best_lr  |               | SGD m=0.9  |              |               | [example](Runs\netvlad_sgd_m_0.9_epoc_10) |
+| 20         | 64           | best_lr  |               | SGD m=0.99 |              |               | [example](Runs\nevlad_sgd_m_0.99_epoc_10) |
+| 20         | 64           | best_lr  |               | Adagrad    |              |               | [example](Runs\netvlad_adagrad_std_10)    |
 
 ### GeM
 
 | Max epochs | LR       | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                            |
 | ---------- | -------- | ------------- | --------- | ------------ | ------------- | ----------------------------------------------- |
-| 15         | 0.000001 |               | Adam      |              |               | [example](Runs\GeM_p_3_lr_10e-6_10)             |
-| 15         | 0.00001  |               | Adam      |              |               | [example](Runs\GeM_p_3_lr_10e-5_10)             |
-| 15         | 0.0001   |               | Adam      |              |               | [example](Runs\GeM_p_3_lr_10e-4_10)             |
-| 15         | 0.001    |               | Adam      |              |               | [example](Runs\GeM_p_3_lr_10e-3_10)             |
-| 15         | best_lr  |               | SGD m=0.9 |              |               | [example](Runs\GeM_p_3_sgd_m_0.9_lr_10e-5_10)   |
-| 15         | best_lr  |               | Adagrad   |              |               | [example](Runs\GeM_p_3_adagrad_std_lr_10e-5_10) |
+| 20         | 0.000001 |               | Adam      |              |               | [example](Runs\GeM_p_3_lr_10e-6_10)             |
+| 20         | 0.00001  | Y (8)         | Adam      | 89.9         | 88.6          | [example](Runs\gem_20_3_10^-6_10^-5_adam)       |
+| 20         | 0.0001   | Y (8)         | Adam      | 89.6         | 87.9          | [example](Runs\gem_20_3_10^-6_10^-4_adam)       |
+| 20         | 0.001    |               | Adam      |              |               | [example](Runs\GeM_p_3_lr_10e-3_10)             |
+| 20         | best_lr  |               | SGD m=0.9 |              |               | [example](Runs\GeM_p_3_sgd_m_0.9_lr_10e-5_10)   |
+| 20         | best_lr  |               | Adagrad   |              |               | [example](Runs\GeM_p_3_adagrad_std_lr_10e-5_10) |
 
 # Ablation
 
