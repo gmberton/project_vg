@@ -33,7 +33,9 @@ class GeoLocalizationNet(nn.Module):
                 traindescs = h5.get("descriptors")[...]
                 self.aggregation.init_params(clsts, traindescs)
                 del clsts, traindescs
-            args.features_dim *= args.netvlad_clusters #update network output dim for compatibility with other backbone 
+
+            # Number of output features from NetVLAD
+            args.features_dim *= args.netvlad_clusters
         else:
             self.aggregation = nn.Sequential(L2Norm(),
                                              torch.nn.AdaptiveAvgPool2d(1),

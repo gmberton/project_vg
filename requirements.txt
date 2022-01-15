@@ -5,3 +5,4 @@ scikit_learn==1.0.1
 torch==1.7.0
 torchvision==0.8.1
 tqdm==4.48.2
+h5py==3.6.0
