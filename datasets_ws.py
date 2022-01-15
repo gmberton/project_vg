@@ -19,7 +19,7 @@ def get_transform(args):
     
     if args.downscale_input:
         return transforms.Compose([
-        transforms.Resize((240,320)),
+        transforms.Resize((360,480)),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ])
@@ -169,7 +169,7 @@ class TripletsDataset(BaseDataset):
         query_index, best_positive_index, neg_indexes = torch.split(self.triplets_global_indexes[index], (1,1,self.negs_num_per_query))
         query     = get_transform(self.args)(path_to_pil_img(self.queries_paths[query_index]))
         positive  = get_transform(self.args)(path_to_pil_img(self.database_paths[best_positive_index]))
-        negatives = get_transform(self.args)(path_to_pil_img(self.database_paths[i])) for i in neg_indexes]
+        negatives = [get_transform(self.args)(path_to_pil_img(self.database_paths[i])) for i in neg_indexes]
         images = torch.stack((query, positive, *negatives), 0)
         triplets_local_indexes = torch.empty((0,3), dtype=torch.int)
         for neg_num in range(len(neg_indexes)):
