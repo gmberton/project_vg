@@ -6,6 +6,12 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description="Benchmarking Visual Geolocalization",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     # Training parameters
+    parser.add_argument("--upscale_input", type=bool, default=False,
+                        help="Upscale imput images to 600x800")
+    parser.add_argument("--downscale_input", type=bool, default=False,
+                        help="Downscale imput images to 240x320")
+    parser.add_argument("--augment_input", type=str, default="None",
+                        choices=["None", "grayscale", "color_jitter", "sharpness_adjust"])
     parser.add_argument("--backbone", type=str,
                         default="resnet18", choices=["resnet18", "resnet50"])
     parser.add_argument("--use_netvlad", type=bool,

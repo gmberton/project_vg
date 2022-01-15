@@ -15,10 +15,43 @@ from sklearn.neighbors import NearestNeighbors
 from torch.utils.data.dataloader import DataLoader
 
 
-base_transform = transforms.Compose([
-    transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-])
+def get_transform(args):
+    
+    if args.downscale_input:
+        return transforms.Compose([
+        transforms.Resize((240,320)),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ])
+    elif args.upscale_input:
+        return transforms.Compose([
+        transforms.Resize((600,800)),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ])
+    elif args.augment_input == 'grayscale':
+        return transforms.Compose([
+        transforms.Grayscale(3),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ])
+    elif args.augment_input == 'color_jitter':
+        return transforms.Compose([
+        transforms.ColorJitter(brightness=0.10, contrast=0.10,saturation=0.10, hue=0.10),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ])
+    elif args.augment_input == 'sharpness_adjust':
+        return transforms.Compose([
+        transforms.RandomAdjustSharpness(0.8,p=0.2),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ])
+    else:
+        return transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ])
 
 
 def path_to_pil_img(path):
@@ -84,7 +117,7 @@ class BaseDataset(data.Dataset):
     
     def __getitem__(self, index):
         img = path_to_pil_img(self.images_paths[index])
-        img = base_transform(img)
+        img =get_transform(self.args)(img)
         return img, index
     
     def __len__(self):
@@ -134,9 +167,9 @@ class TripletsDataset(BaseDataset):
             # At inference time return the single image. This is used for caching
             return super().__getitem__(index)
         query_index, best_positive_index, neg_indexes = torch.split(self.triplets_global_indexes[index], (1,1,self.negs_num_per_query))
-        query     =  base_transform(path_to_pil_img(self.queries_paths[query_index]))
-        positive  =  base_transform(path_to_pil_img(self.database_paths[best_positive_index]))
-        negatives = [base_transform(path_to_pil_img(self.database_paths[i])) for i in neg_indexes]
+        query     = get_transform(self.args)(path_to_pil_img(self.queries_paths[query_index]))
+        positive  = get_transform(self.args)(path_to_pil_img(self.database_paths[best_positive_index]))
+        negatives = get_transform(self.args)(path_to_pil_img(self.database_paths[i])) for i in neg_indexes]
         images = torch.stack((query, positive, *negatives), 0)
         triplets_local_indexes = torch.empty((0,3), dtype=torch.int)
         for neg_num in range(len(neg_indexes)):
