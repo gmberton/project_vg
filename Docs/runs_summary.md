@@ -15,7 +15,7 @@
 
 | Max epochs | Num Clusters | LR       | Stopped Early | Optimizer  | Best R@5 Val | Best R@5 Test | Link                                       |
 | ---------- | ------------ | -------- | ------------- | ---------- | ------------ | ------------- | ------------------------------------------ |
-| 20         | 64           | 0.000001 |               | Adam       |              |               | [example](/Runs/netvlad_20_64_10e-6_adam)  |
+| 20         | 64           | 0.000001 |      N (20)         | Adam       |    95.8          |    92.8           | [example](/Runs/netvlad_20_64_10e-6_adam)  |
 | 20         | 64           | 0.00001  | Y (13)        | Adam       | **96.3**     | **93.2**      | [example](/Runs/netvlad_20_64_10e-5_adam)  |
 | 20         | 64           | 0.0001   | Y (7)         | Adam       | 95.9         | 91.9          | [example](/Runs/netvlad_20_64_10e-4_adam)  |
 | 20         | 64           | 0.001    | Y (6)         | Adam       | 92.9         | 90.3          | [example](/Runs/netvlad_20_64_10e-3_adam)  |
