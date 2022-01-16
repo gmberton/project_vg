@@ -13,90 +13,112 @@
 
 ### NetVLAD
 
-| Max epochs | Num Clusters | LR       | Stopped Early | Optimizer  | Best R@5 Val | Best R@5 Test | Link                                       |
-| ---------- | ------------ | -------- | ------------- | ---------- | ------------ | ------------- | ------------------------------------------ |
-| 20         | 64           | 0.000001 |      N (20)         | Adam       |    95.8          |    92.8           | [example](/Runs/netvlad_20_64_10e-6_adam)  |
-| 20         | 64           | 0.00001  | Y (13)        | Adam       | **96.3**     | **93.2**      | [example](/Runs/netvlad_20_64_10e-5_adam)  |
-| 20         | 64           | 0.0001   | Y (7)         | Adam       | 95.9         | 91.9          | [example](/Runs/netvlad_20_64_10e-4_adam)  |
-| 20         | 64           | 0.001    | Y (6)         | Adam       | 92.9         | 90.3          | [example](/Runs/netvlad_20_64_10e-3_adam)  |
-| 20         | 64           | best_lr  |               | SGD m=0.9  |              |               | [example](/Runs/netvlad_sgd_m_0.9_epoc_10) |
-| 20         | 64           | best_lr  |               | SGD m=0.99 |              |               | [example](/Runs/nevlad_sgd_m_0.99_epoc_10) |
-| 20         | 64           | best_lr  |               | Adagrad    |              |               | [example](/Runs/netvlad_adagrad_std_10)    |
+| Max epochs | Num Clusters | LR       | Stopped Early | Optimizer  | Best R@5 Val | Best R@5 Test | Link                                          |
+| ---------- | ------------ | -------- | ------------- | ---------- | ------------ | ------------- | --------------------------------------------- |
+| 20         | 64           | 0.000001 | N (20)        | Adam       | 95.8         | 92.8          | [example](/Runs/netvlad_20_64_10e-6_adam)     |
+| 20         | 64           | 0.00001  | Y (13)        | Adam       | **96.3**     | **93.2**      | [example](/Runs/netvlad_20_64_10e-5_adam)     |
+| 20         | 64           | 0.0001   | Y (7)         | Adam       | 95.9         | 91.9          | [example](/Runs/netvlad_20_64_10e-4_adam)     |
+| 20         | 64           | 0.001    | Y (6)         | Adam       | 92.9         | 90.3          | [example](/Runs/netvlad_20_64_10e-3_adam)     |
+| 20         | 64           | 0.00001  | N (20)        | SGD m=0.9  | 90.6         | 90.1          | [example](/Runs/netvlad_20_64_10e-5_sgd_0.9)  |
+| 20         | 64           | 0.00001  | N (20)        | SGD m=0.99 | 95.6         | 92.8          | [example](/Runs/netvlad_20_64_10e-5_sgd_0.99) |
+| 20         | 64           | 0.00001  | N (20)        | Adagrad    | 92.3         | 90.7          | [example](/Runs/netvlad_20_64_10e-5_adagrad)  |
 
 ### GeM
 
-| Max epochs | LR       | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                             |
-| ---------- | -------- | ------------- | --------- | ------------ | ------------- | ------------------------------------------------ |
-| 20         | 0.000001 | N (20)        | Adam      | **90.1**     | **89.0**      | [example](/Runs/gem_20_3_10e-6_10e-6_adam)       |
-| 20         | 0.00001  | Y (8)         | Adam      | 89.9         | 88.6          | [example](/Runs/gem_20_3_10e-6_10e-5_adam)       |
-| 20         | 0.0001   | Y (8)         | Adam      | 89.6         | 87.9          | [example](/Runs/gem_20_3_10e-6_10e-4_adam)       |
-| 20         | 0.001    | Y (11)        | Adam      | 86.9         | 86.0          | [example](/Runs/gem_20_3_10e-6_10e-3_adam)       |
-| 20         | best_lr  |               | SGD m=0.9 |              |               | [example](/Runs/gem_20_3_10e-6_10e-6_adam)       |
-| 20         | best_lr  |               | Adagrad   |              |               | [example](/Runs/GeM_p_3_adagrad_std_lr_10e-5_10) |
+| Max epochs | LR                     | Stopped Early | Optimizer  | Best R@5 Val | Best R@5 Test | Link                                           |
+| ---------- | ---------------------- | ------------- | ---------- | ------------ | ------------- | ---------------------------------------------- |
+| 20         | 0.000001               | N (20)        | Adam       | **90.1**     | **89.0**      | [example](/Runs/gem_20_3_10e-6_10e-6_adam)     |
+| 20         | 0.00001                | Y (8)         | Adam       | 89.9         | 88.6          | [example](/Runs/gem_20_3_10e-6_10e-5_adam)     |
+| 20         | 0.0001                 | Y (8)         | Adam       | 89.6         | 87.9          | [example](/Runs/gem_20_3_10e-6_10e-4_adam)     |
+| 20         | 0.001                  | Y (11)        | Adam       | 86.9         | 86.0          | [example](/Runs/gem_20_3_10e-6_10e-3_adam)     |
+| 20         | 0.00001 fail use 10^-6 | N (20)        | SGD m=0.9  | 60.0         | 67.5          | [example](/Runs/gem_20_3_10e-6_10e-6_sgd_0.9)  |
+| 20         | 0.000001               | N (20)        | SGD m=0.99 |              |               | [example](/Runs/gem_20_3_10e-6_10e-6_sgd_0.99) |
+| 20         | 0.00001 fail use 10^-6 | N (20)        | Adagrad    | 78.0         | 80.4          | [example](/Runs/gem_20_3_10e-6_10e-6_adagrad)  |
 
 # Ablation
 
-### NetVLAD Ablation Test StLucia
+## StLucia test
 
-| Max epochs | Num Clusters | LR      | Stopped Early | Optimizer | Best R@5 Test | Link                                 |
-| ---------- | ------------ | ------- | ------------- | --------- | ------------- | ------------------------------------ |
-| 15         | 64           | best_lr |               | best_opt  |               | [example](/Runs/netvlad_10_0.001_64) |
+### NetVLAD and GeM Ablation Test on StLucia
 
-### NetVLAD train_positives_threshold_val
+| Aggr.   | Max epochs | Params              | LR       | Optimizer  | Best R@5 Test | Link |
+| ------- | ---------- | ------------------- | -------- | ---------- | ------------- | ---- |
+| NetVLAD | 20         | netvlad_clusters=64 | 0.00001  | Adam       |               |      |
+| NetVLAD | 20         | netvlad_clusters=64 | 0.00001  | Adagrad    |               |      |
+| NetVLAD | 20         | netvlad_clusters=64 | 0.00001  | SGD m=0.99 |               |      |
+| GeM     | 20         | p=3, eps=10^-6      | 0.000001 | Adam       |               |      |
+| GeM     | 20         | p=3, eps=10^-6      | 0.000001 | Adagrad    |               |      |
+| GeM     | 20         | p=3, eps=10^-6      | 0.000001 | SGD m=0.99 |               |      |
 
-| Max epochs | Num Clusters | train_positives_threshold_val | LR      | Stopped Early | Optimizer | Best R@5 Test | Link                                 |
-| ---------- | ------------ | ----------------------------- | ------- | ------------- | --------- | ------------- | ------------------------------------ |
-| 15         | 64           | 5                             | best_lr |               | best_opt  |               | [example](/Runs/netvlad_10_0.001_64) |
-| 15         | 64           | 15                            | best_lr |               | best_opt  |               | [example](/Runs/netvlad_10_0.001_64) |
+## train_positives_threshold_dist and val_positive_threshold_dist tests
 
-### NetVLAD val_positive_threshold_val
+### NetVLAD train_positives_threshold_dist on Pitts30k
 
-| Max epochs | Num Clusters | val_positive_threshold_val | LR      | Stopped Early | Optimizer | Best R@5 Test | Link                                 |
-| ---------- | ------------ | -------------------------- | ------- | ------------- | --------- | ------------- | ------------------------------------ |
-| 15         | 64           | 20                         | best_lr |               | best_opt  |               | [example](/Runs/netvlad_10_0.001_64) |
-| 15         | 64           | 30                         | best_lr |               | best_opt  |               | [example](/Runs/netvlad_10_0.001_64) |
+| Max epochs | Num Clusters | train_positives_threshold_val | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                                                        |
+| ---------- | ------------ | ----------------------------- | ------- | ------------- | --------- | ------------ | ------------- | --------------------------------------------------------------------------- |
+| 20         | 64           | 5                             | 0.00001 | Y (6)         | Adam      | 96.4         | 93.2          | [example](/Runs/netvlad_20_64_10e-5_adam_train_positives_threshold_dist_5)  |
+| 20         | 64           | 15                            | 0.00001 | Y (9)         | Adam      | 96.0         | 93.1          | [example](/Runs/netvlad_20_64_10e-5_adam_train_positives_threshold_dist_15) |
 
-### Data augmentation
+### NetVLAD train_positives_threshold_dist on StLucia
 
-| Max epochs | Num Clusters | val_positive_threshold_val | LR      | Stopped Early | Optimizer | Best R@5 Test | Link                                 |
-| ---------- | ------------ | -------------------------- | ------- | ------------- | --------- | ------------- | ------------------------------------ |
-| 15         | 64           | 20                         | best_lr |               | best_opt  |               | [example](/Runs/netvlad_10_0.001_64) |
-| 15         | 64           | 30                         | best_lr |               | best_opt  |               | [example](/Runs/netvlad_10_0.001_64) |
+| Max epochs | Num Clusters | train_positives_threshold_val | LR      | Optimizer | Best R@5 Test | Link                                                                                      |
+| ---------- | ------------ | ----------------------------- | ------- | --------- | ------------- | ----------------------------------------------------------------------------------------- |
+| 20         | 64           | 5                             | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_train_positives_threshold_dist_5_test_st_lucia)  |
+| 20         | 64           | 15                            | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_train_positives_threshold_dist_15_test_st_lucia) |
 
-### Data augmentation on StLucia
+### NetVLAD val_positive_threshold_dist
 
-| Max epochs | Num Clusters | val_positive_threshold_val | LR      | Stopped Early | Optimizer | Best R@5 Test | Link                                 |
-| ---------- | ------------ | -------------------------- | ------- | ------------- | --------- | ------------- | ------------------------------------ |
-| 15         | 64           | 20                         | best_lr |               | best_opt  |               | [example](/Runs/netvlad_10_0.001_64) |
-| 15         | 64           | 30                         | best_lr |               | best_opt  |               | [example](/Runs/netvlad_10_0.001_64) |
+| Max epochs | Num Clusters | val_positive_threshold_val | LR      | Optimizer | Best R@5 Test | Link                                                                                   |
+| ---------- | ------------ | -------------------------- | ------- | --------- | ------------- | -------------------------------------------------------------------------------------- |
+| 20         | 64           | 20                         | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_val_positive_threshold_dist_20_test_pitts30k) |
+| 20         | 64           | 30                         | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_val_positive_threshold_dist_30_test_pitts30k) |
 
-### Data augmentation change img resolution both train and test time
+### NetVLAD val_positive_threshold_dist on StLucia
 
-| Max epochs | Num Clusters | val_positive_threshold_val | LR      | Stopped Early | Optimizer | Best R@5 Test | Link                                 |
-| ---------- | ------------ | -------------------------- | ------- | ------------- | --------- | ------------- | ------------------------------------ |
-| 15         | 64           | 20                         | best_lr |               | best_opt  |               | [example](/Runs/netvlad_10_0.001_64) |
-| 15         | 64           | 30                         | best_lr |               | best_opt  |               | [example](/Runs/netvlad_10_0.001_64) |
+| Max epochs | Num Clusters | val_positive_threshold_val | LR      | Optimizer | Best R@5 Test | Link                                                                                   |
+| ---------- | ------------ | -------------------------- | ------- | --------- | ------------- | -------------------------------------------------------------------------------------- |
+| 20         | 64           | 20                         | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_val_positive_threshold_dist_20_test_st_lucia) |
+| 20         | 64           | 30                         | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_val_positive_threshold_dist_30_test_st_lucia) |
 
-### Data augmentation change img resolution both train and test time on StLucia
+## Data augmentation
 
-| Max epochs | Num Clusters | val_positive_threshold_val | LR      | Stopped Early | Optimizer | Best R@5 Test | Link                                 |
-| ---------- | ------------ | -------------------------- | ------- | ------------- | --------- | ------------- | ------------------------------------ |
-| 15         | 64           | 20                         | best_lr |               | best_opt  |               | [example](/Runs/netvlad_10_0.001_64) |
-| 15         | 64           | 30                         | best_lr |               | best_opt  |               | [example](/Runs/netvlad_10_0.001_64) |
+### NetVLAD data augmentation on Pitts30k
+
+| Max epochs | Num Clusters | Augmentation     | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                                       |
+| ---------- | ------------ | ---------------- | ------- | ------------- | --------- | ------------ | ------------- | ---------------------------------------------------------- |
+| 20         | 64           | sharpness_adjust | 0.00001 | Y (8)         | Adam      | 95.9         | 93.1          | [example](/Runs/netvlad_20_64_10e-5_adam_sharpness_adjust) |
+| 20         | 64           | greyscale        | 0.00001 | Y (11)        | Adam      | 96.0         | 92.5          | [example](/Runs/netvlad_20_64_10e-5_adam_grayscale)        |
+| 20         | 64           | color_jitter     | 0.00001 | Y (11)        | Adam      | 96.2         | 92.9          | [example](/Runs/netvlad_20_64_10e-5_adam_color_jitter)     |
+| 20         | 64           | downscale        | 0.00001 | Y (10)        | Adam      | 96.4         | 93.0          | [example](/Runs/netvlad_20_64_10e-5_adam_downscale)        |
+| 20         | 64           | upscale          | 0.00001 |               | Adam      |              |               | [example](/Runs/netvlad_20_64_10e-5_adam_upscale)          |
+
+### NetVLAD data augmentation on StLucia
+
+| Max epochs | Num Clusters | Augmentation     | LR      | Optimizer | Best R@5 Test | Link                                                                     |
+| ---------- | ------------ | ---------------- | ------- | --------- | ------------- | ------------------------------------------------------------------------ |
+| 20         | 64           | sharpness_adjust | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_sharpness_adjust_test_st_lucia) |
+| 20         | 64           | greyscale        | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_grayscale_test_st_lucia)        |
+| 20         | 64           | color_jitter     | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_color_jitter_test_st_lucia)     |
+| 20         | 64           | downscale        | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_downscale_test_st_lucia)        |
+| 20         | 64           | upscale          | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_upscale_test_st_lucia)          |
 
 # Personal Contribution
+
+## Backbone
 
 ### NetVLAD PC ResNet50
 
 | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
 | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
-| 15         | best_lr |               | best_opt  |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+| 20         | 0.00001 |               | best_opt  |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
 
 ### NetVLAD PC ResNet50MoCo
 
 | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
 | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
-| 15         | best_lr |               | best_opt  |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+| 20         | 0.00001 |               | best_opt  |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+
+## LR
 
 ### Step LR
 

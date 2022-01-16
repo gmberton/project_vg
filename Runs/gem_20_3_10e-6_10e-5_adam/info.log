@@ -1,25 +1,3 @@
-info.log
-Chi ha accesso
-Non condiviso
-Proprietà di sistema
-Tipo
-Testo
-Dimensioni
-4 kB
-Spazio di archiviazione utilizzato
-4 kB
-Posizione
-2022-01-14_18-57-09
-Proprietario
-io
-Data modifica
-23:38 da me
-Aperto
-11:25 da me
-Data creazione
-23:38 con Google Drive for desktop
-Aggiungi una descrizione
-I visualizzatori possono scaricare
 2022-01-14 18:57:09   Arguments: Namespace(backbone='resnet18', cache_refresh_rate=1000, datasets_folder='./Dataset_pitts30k', device='cuda', epochs_num=20, exp_name='default', gem_eps=1e-06, gem_p=3, infer_batch_size=16, lr=1e-05, margin=0.1, momentum=0.9, neg_samples_num=1000, negs_num_per_query=10, netvlad_clusters=64, num_workers=8, output_folder='runs/default/2022-01-14_18-57-09', patience=3, queries_per_epoch=5000, recall_values=[1, 5, 10, 20], seed=0, test_dataset_name=None, test_model_path=None, train_batch_size=4, train_positives_dist_threshold=10, use_adagrad=None, use_gem=True, use_netvlad=None, use_sgd=None, val_positive_dist_threshold=25)
 2022-01-14 18:57:09   The outputs are being saved in runs/default/2022-01-14_18-57-09
 2022-01-14 18:57:09   Using 1 GPUs and 2 CPUs
