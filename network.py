@@ -5,6 +5,7 @@ import torchvision
 import torch.nn as nn
 import torch.nn.functional as F
 from netvlad import NetVLAD
+from gem import GeM
 
 
 class GeoLocalizationNet(nn.Module):
@@ -19,10 +20,13 @@ class GeoLocalizationNet(nn.Module):
         if args.head == 'NETVLAD':
             #NetVLAD head
             logging.info("Using NetVlad network")
-            self.aggregation = nn.Sequential(L2Norm(), NetVLAD())
+            self.aggregation = nn.Sequential(L2Norm(), 
+                                                NetVLAD(dim = 128, num_clusters=64))
         elif args.head == 'GEM':
-            #TODO
-            print("Using GeM network")
+            logging.info("Using GeM network")
+            self.aggregation = nn.Sequential(L2Norm(), 
+                                                GeM(p = 3), 
+                                                Flatten())
         else:
             self.aggregation = nn.Sequential(L2Norm(),
                                          torch.nn.AdaptiveAvgPool2d(1),
