@@ -22,6 +22,7 @@ class GeoLocalizationNet(nn.Module):
             self.aggregation = nn.Sequential(L2Norm(), NetVLAD())
         elif args.head == 'GEM':
             #TODO
+            print("Using GeM network")
         else:
             self.aggregation = nn.Sequential(L2Norm(),
                                          torch.nn.AdaptiveAvgPool2d(1),
