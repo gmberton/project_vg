@@ -1,0 +1,5 @@
+2022-01-16 16:26:39   Arguments: Namespace(augment_input='None', backbone='resnet18', cache_refresh_rate=1000, datasets_folder='./Dataset_st_lucia', device='cuda', downscale_input=False, epochs_num=5, exp_name='default', gem_eps=1e-06, gem_p=3, infer_batch_size=16, lr=1e-05, margin=0.1, momentum=0.9, neg_samples_num=1000, negs_num_per_query=10, netvlad_clusters=64, num_workers=8, output_folder='test_runs/default/2022-01-16_16-26-39', patience=3, queries_per_epoch=5000, recall_values=[1, 5, 10, 20], seed=0, test_dataset_name='st_lucia', test_model_path='./Runs/gem_20_3_10e-6_10e-6_adam/best_model.pth', train_batch_size=4, train_positives_dist_threshold=10, upscale_input=False, use_adagrad=None, use_gem=True, use_netvlad=None, use_sgd=None, val_positive_dist_threshold=25)
+2022-01-16 16:26:39   The outputs are being saved in test_runs/default/2022-01-16_16-26-39
+2022-01-16 16:26:39   Using 1 GPUs and 2 CPUs
+2022-01-16 16:26:39   Test set: < BaseDataset, st_lucia - #database: 1549; #queries: 1464 >
+2022-01-16 16:27:23   Recalls on < BaseDataset, st_lucia - #database: 1549; #queries: 1464 >: R@1: 47.2, R@5: 64.5, R@10: 72.5, R@20: 78.8
