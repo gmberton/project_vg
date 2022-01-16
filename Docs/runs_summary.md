@@ -50,35 +50,35 @@
 | GeM     | 20         | p=3, eps=10^-6      | 0.000001 | Adagrad    |               |      |
 | GeM     | 20         | p=3, eps=10^-6      | 0.000001 | SGD m=0.99 |               |      |
 
-## train_positives_threshold_dist and val_positive_threshold_dist tests
+## train_positives_dist_threshold and val_positive_dist_threshold tests
 
-### NetVLAD train_positives_threshold_dist on Pitts30k
+### NetVLAD train_positives_dist_threshold on Pitts30k
 
 | Max epochs | Num Clusters | train_positives_threshold_val | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                                                        |
 | ---------- | ------------ | ----------------------------- | ------- | ------------- | --------- | ------------ | ------------- | --------------------------------------------------------------------------- |
-| 20         | 64           | 5                             | 0.00001 | Y (6)         | Adam      | 96.4         | 93.2          | [example](/Runs/netvlad_20_64_10e-5_adam_train_positives_threshold_dist_5)  |
-| 20         | 64           | 15                            | 0.00001 | Y (9)         | Adam      | 96.0         | 93.1          | [example](/Runs/netvlad_20_64_10e-5_adam_train_positives_threshold_dist_15) |
+| 20         | 64           | 5                             | 0.00001 | Y (6)         | Adam      | 96.4         | 93.2          | [example](/Runs/netvlad_20_64_10e-5_adam_train_positives_dist_threshold_5)  |
+| 20         | 64           | 15                            | 0.00001 | Y (9)         | Adam      | 96.0         | 93.1          | [example](/Runs/netvlad_20_64_10e-5_adam_train_positives_dist_threshold_15) |
 
-### NetVLAD train_positives_threshold_dist on StLucia
+### NetVLAD train_positives_dist_threshold on StLucia
 
 | Max epochs | Num Clusters | train_positives_threshold_val | LR      | Optimizer | Best R@5 Test | Link                                                                                      |
 | ---------- | ------------ | ----------------------------- | ------- | --------- | ------------- | ----------------------------------------------------------------------------------------- |
-| 20         | 64           | 5                             | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_train_positives_threshold_dist_5_test_st_lucia)  |
-| 20         | 64           | 15                            | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_train_positives_threshold_dist_15_test_st_lucia) |
+| 20         | 64           | 5                             | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_train_positives_dist_threshold_5_test_st_lucia)  |
+| 20         | 64           | 15                            | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_train_positives_dist_threshold_15_test_st_lucia) |
 
-### NetVLAD val_positive_threshold_dist
-
-| Max epochs | Num Clusters | val_positive_threshold_val | LR      | Optimizer | Best R@5 Test | Link                                                                                   |
-| ---------- | ------------ | -------------------------- | ------- | --------- | ------------- | -------------------------------------------------------------------------------------- |
-| 20         | 64           | 20                         | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_val_positive_threshold_dist_20_test_pitts30k) |
-| 20         | 64           | 30                         | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_val_positive_threshold_dist_30_test_pitts30k) |
-
-### NetVLAD val_positive_threshold_dist on StLucia
+### NetVLAD val_positive_dist_threshold
 
 | Max epochs | Num Clusters | val_positive_threshold_val | LR      | Optimizer | Best R@5 Test | Link                                                                                   |
 | ---------- | ------------ | -------------------------- | ------- | --------- | ------------- | -------------------------------------------------------------------------------------- |
-| 20         | 64           | 20                         | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_val_positive_threshold_dist_20_test_st_lucia) |
-| 20         | 64           | 30                         | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_val_positive_threshold_dist_30_test_st_lucia) |
+| 20         | 64           | 20                         | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_val_positive_dist_threshold_20_test_pitts30k) |
+| 20         | 64           | 30                         | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_val_positive_dist_threshold_30_test_pitts30k) |
+
+### NetVLAD val_positive_dist_threshold on StLucia
+
+| Max epochs | Num Clusters | val_positive_threshold_val | LR      | Optimizer | Best R@5 Test | Link                                                                                   |
+| ---------- | ------------ | -------------------------- | ------- | --------- | ------------- | -------------------------------------------------------------------------------------- |
+| 20         | 64           | 20                         | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_val_positive_dist_threshold_20_test_st_lucia) |
+| 20         | 64           | 30                         | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_val_positive_dist_threshold_30_test_st_lucia) |
 
 ## Data augmentation
 
