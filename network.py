@@ -20,8 +20,7 @@ class GeoLocalizationNet(nn.Module):
         if args.head == 'NETVLAD':
             #NetVLAD head
             logging.info("Using NetVlad network")
-            self.aggregation = nn.Sequential(L2Norm(), 
-                                                NetVLAD(dim = 256, num_clusters=16))
+            self.aggregation = nn.Sequential(L2Norm(), NetVLAD(dim = 256, num_clusters=16))
         elif args.head == 'GEM':
             logging.info("Using GeM network")
             self.aggregation = nn.Sequential(L2Norm(), 
