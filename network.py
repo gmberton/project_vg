@@ -63,7 +63,7 @@ def get_backbone(args):
         layers = list(backbone.children())[:-3]
         backbone = torch.nn.Sequential(*layers)
 
-    elif args.backbone == 'resnet50':
+    elif args.backbone == 'resnet50-conv5':
         features_dim = 2048
         backbone = torchvision.models.resnet50(pretrained=True)
         for name, child in backbone.named_children():
@@ -76,7 +76,20 @@ def get_backbone(args):
         layers = list(backbone.children())[:-2]
         backbone = torch.nn.Sequential(*layers)
 
-    elif args.backbone == 'resnet50moco':
+    elif args.backbone == 'resnet50-conv4':
+        features_dim = 1024
+        backbone = torchvision.models.resnet50(pretrained=True)
+        for name, child in backbone.named_children():
+            if name == "layer3":
+                break
+            for params in child.parameters():
+                params.requires_grad = False
+        logging.debug(
+            "Cut conv5, Train only conv4 of the ResNet-50, freeze the previous ones")
+        layers = list(backbone.children())[:-3]
+        backbone = torch.nn.Sequential(*layers)
+    
+    elif args.backbone == 'resnet50moco-conv5':
         features_dim = 2048
         backbone = torch.load('moco_v1_200ep_pretrain.pth.tar')
         for name, child in backbone.named_children():
@@ -85,9 +98,23 @@ def get_backbone(args):
             for params in child.parameters():
                 params.requires_grad = False
         logging.debug(
-            "Train only conv5 of the ResNet-50 trained by MoCo-v1 team, freeze the previous ones")
+            "Train only conv5 of the ResNet-50 pre-trained by MoCo-v1 team, freeze the previous ones")
         layers = list(backbone.children())[:-2]
         backbone = torch.nn.Sequential(*layers)
+
+    elif args.backbone == 'resnet50moco-conv4':
+        features_dim = 1024
+        backbone = torch.load('moco_v1_200ep_pretrain.pth.tar')
+        for name, child in backbone.named_children():
+            if name == "layer3":
+                break
+            for params in child.parameters():
+                params.requires_grad = False
+        logging.debug(
+            "Cut cov5, Train only conv4 of the ResNet-50 pre-trained by MoCo-v1 team, freeze the previous ones")
+        layers = list(backbone.children())[:-3]
+        backbone = torch.nn.Sequential(*layers)
+
 
     args.features_dim = features_dim  # Number of output features from backbone
     return backbone

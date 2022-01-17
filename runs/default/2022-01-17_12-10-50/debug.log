@@ -1,0 +1,40 @@
+2022-01-17 12:10:50   Arguments: Namespace(upscale_input=False, downscale_input=False, augment_input='None', backbone='resnet50-conv4', use_netvlad=True, netvlad_clusters=64, use_gem=None, gem_p=3, gem_eps=1e-06, use_sgd=None, use_adagrad=None, momentum=0.9, train_batch_size=4, infer_batch_size=16, margin=0.1, epochs_num=20, patience=3, lr=1e-05, cache_refresh_rate=1000, queries_per_epoch=5000, negs_num_per_query=10, neg_samples_num=1000, seed=0, device='cuda', num_workers=12, val_positive_dist_threshold=25, train_positives_dist_threshold=10, recall_values=[1, 5, 10, 20], datasets_folder='./Dataset_pitts30k', exp_name='default', test_dataset_name=None, test_model_path=None, output_folder='runs/default/2022-01-17_12-10-50')
+2022-01-17 12:10:50   The outputs are being saved in runs/default/2022-01-17_12-10-50
+2022-01-17 12:10:50   Using 1 GPUs and 12 CPUs
+2022-01-17 12:10:50   Loading dataset Pitts30k from folder ./Dataset_pitts30k
+2022-01-17 12:10:50   There are 96 queries without any positives within the training set. They won't be considered as they're useless for training.
+2022-01-17 12:10:50   Train query set: < TripletsDataset, pitts30k - #database: 10000; #queries: 7320 >
+2022-01-17 12:10:50   Val set: < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >
+2022-01-17 12:10:50   Test set: < BaseDataset, pitts30k - #database: 10000; #queries: 6816 >
+2022-01-17 12:10:50   Cut conv5, Train only conv4 of the ResNet-50, freeze the previous ones
+2022-01-17 12:10:56   Output dimension of the model is 65536
+2022-01-17 12:10:56   Start training epoch: 00
+2022-01-17 12:10:56   Cache: 0 / 5
+2022-01-17 12:16:20   
+Traceback (most recent call last):
+  File "/home/franzhd/Aml_project/project_vg/run_train.py", line 100, in <module>
+    features = model(images.to(args.device))
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/franzhd/Aml_project/project_vg/network.py", line 45, in forward
+    x = self.backbone(x)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torchvision/models/resnet.py", line 133, in forward
+    out = self.bn3(out)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torch/nn/modules/batchnorm.py", line 168, in forward
+    return F.batch_norm(
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torch/nn/functional.py", line 2282, in batch_norm
+    return torch.batch_norm(
+RuntimeError: CUDA out of memory. Tried to allocate 226.00 MiB (GPU 0; 7.77 GiB total capacity; 4.92 GiB already allocated; 131.44 MiB free; 5.08 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+

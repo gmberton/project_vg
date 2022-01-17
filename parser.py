@@ -13,7 +13,7 @@ def parse_arguments():
     parser.add_argument("--augment_input", type=str, default="None",
                         choices=["None", "grayscale", "color_jitter", "sharpness_adjust"])
     parser.add_argument("--backbone", type=str,
-                        default="resnet18", choices=["resnet18", "resnet50", "resnet50moco"])
+                        default="resnet18", choices=["resnet18", "resnet50-conv5","resnet50-conv4","resnet50moco-conv4", "resnet50moco-conv5"])
     parser.add_argument("--use_netvlad", type=bool,
                         help="Specify if NetVLAD must be used")
 
