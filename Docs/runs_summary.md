@@ -90,7 +90,7 @@
 | 20         | 64           | greyscale        | 0.00001 | Y (11)        | Adam      | 96.0         | 92.5          | [example](/Runs/netvlad_20_64_10e-5_adam_grayscale)        |
 | 20         | 64           | color_jitter     | 0.00001 | Y (11)        | Adam      | 96.2         | 92.9          | [example](/Runs/netvlad_20_64_10e-5_adam_color_jitter)     |
 | 20         | 64           | downscale        | 0.00001 | Y (10)        | Adam      | 96.4         | 93.0          | [example](/Runs/netvlad_20_64_10e-5_adam_downscale)        |
-| 20         | 64           | upscale          | 0.00001 |               | Adam      |              |               | [example](/Runs/netvlad_20_64_10e-5_adam_upscale)          |
+| 20         | 64           | upscale          | 0.00001 | Y (12)        | Adam      | 96.4         | 93.3          | [example](/Runs/netvlad_20_64_10e-5_adam_upscale)          |
 
 ### NetVLAD data augmentation on StLucia
 
