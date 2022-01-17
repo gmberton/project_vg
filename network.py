@@ -1,3 +1,4 @@
+from email.policy import strict
 import torch
 import logging
 import torchvision
@@ -19,8 +20,8 @@ class GeoLocalizationNet(nn.Module):
     def __init__(self, args):
         super().__init__()
         self.backbone = get_backbone(args)
-
-        self.attention = None
+        self.attention=None
+        
         if args.use_attention == "crn":
             self.attention = CRN(args)
 
@@ -50,7 +51,7 @@ class GeoLocalizationNet(nn.Module):
         x = self.backbone(x)
 
         reweight_mask = None
-        if self.attention:
+        if self.attention is not None:
             reweight_mask = self.attention(x)
 
         x = self.aggregation(x, reweight_mask)
@@ -133,7 +134,8 @@ def get_backbone(args):
 
     elif args.backbone == 'resnet50moco-conv5':
         features_dim = 2048
-        backbone = torch.load('moco_v1_200ep_pretrain.pth.tar')
+        backbone = torchvision.models.resnet50()
+        backbone.load_state_dict(torch.load('moco_v1_200ep_pretrain.pth.tar'),strict=False)
         for name, child in backbone.named_children():
             if name == "layer4":
                 break
@@ -146,7 +148,8 @@ def get_backbone(args):
 
     elif args.backbone == 'resnet50moco-conv4':
         features_dim = 1024
-        backbone = torch.load('moco_v1_200ep_pretrain.pth.tar')
+        backbone = torchvision.models.resnet50()
+        backbone.load_state_dict(torch.load('moco_v1_200ep_pretrain.pth.tar'),strict=False)
         for name, child in backbone.named_children():
             if name == "layer3":
                 break
