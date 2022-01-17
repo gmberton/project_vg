@@ -20,6 +20,7 @@ class GeoLocalizationNet(nn.Module):
         super().__init__()
         self.backbone = get_backbone(args)
 
+        self.attention = None
         if args.use_attention == "crn":
             self.attention = CRN(args)
 
