@@ -36,7 +36,7 @@
 | 20         | 0.00001  | N (20)        | Adagrad    | 78.0         | 80.4          | [example](/Runs/gem_20_3_10e-6_10e-5_adagrad)  |
 | 20         | 0.000001 | N (20)        | SGD m=0.9  | 48.9         | 57.4          | [example](/Runs/gem_20_3_10e-6_10e-6_sgd_0.9)  |
 | 20         | 0.000001 | N (20)        | SGD m=0.99 |              |               | [example](/Runs/gem_20_3_10e-6_10e-6_sgd_0.99) |
-| 20         | 0.000001 | N (20)        | Adagrad    |              |               | [example](/Runs/gem_20_3_10e-6_10e-6_adagrad)  |
+| 20         | 0.000001 | N (20)        | Adagrad    | 52.0         | 60.1          | [example](/Runs/gem_20_3_10e-6_10e-6_adagrad)  |
 
 # Ablation
 
@@ -109,7 +109,23 @@
 
 ## Backbone
 
+### NetVLAD PC AlexNet train
+
+| Train from | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
+| ---------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
+| 5          | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+
+### NetVLAD PC VGG16 train
+
+| Train from | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
+| ---------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
+| 5          | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+
 ### NetVLAD PC ResNet18 train layer 5
+
+| Train from | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
+| ---------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
+| 5          | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
 
 ### NetVLAD PC ResNet50
 
@@ -120,9 +136,9 @@
 
 ### NetVLAD PC ResNet50MoCo
 
-| Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
-| ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
-| 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+| Train from | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
+| ---------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
+| 4          | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
 
 ## LR
 
