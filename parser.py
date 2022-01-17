@@ -29,6 +29,9 @@ def parse_arguments():
     parser.add_argument("--gem_eps", type=float, default=0.000001,
                         help="Epsilon for GeM")
 
+    parser.add_argument("--use_crn", type=bool,
+                        help="Specify if CRN layer for attention must be used")
+
     parser.add_argument("--use_sgd", type=bool,
                         help="Specify if optimizer sgd must be used")
 

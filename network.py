@@ -3,6 +3,7 @@ import logging
 import torchvision
 import torch.nn as nn
 import torch.nn.functional as F
+from crn import CRN
 from netvlad import NetVLAD
 from gem import GeM
 import h5py
@@ -18,6 +19,9 @@ class GeoLocalizationNet(nn.Module):
     def __init__(self, args):
         super().__init__()
         self.backbone = get_backbone(args)
+
+        if args.use_crn:
+            self.attention = CRN(args)
 
         if args.use_gem:
             self.aggregation = nn.Sequential(
@@ -43,7 +47,12 @@ class GeoLocalizationNet(nn.Module):
 
     def forward(self, x):
         x = self.backbone(x)
-        x = self.aggregation(x)
+
+        reweight_mask = None
+        if self.attention:
+            reweight_mask = self.attention(x)
+
+        x = self.aggregation(x, reweight_mask)
         return x
 
 
@@ -88,7 +97,7 @@ def get_backbone(args):
             "Cut conv5, Train only conv4 of the ResNet-50, freeze the previous ones")
         layers = list(backbone.children())[:-3]
         backbone = torch.nn.Sequential(*layers)
-    
+
     elif args.backbone == 'resnet50moco-conv5':
         features_dim = 2048
         backbone = torch.load('moco_v1_200ep_pretrain.pth.tar')
@@ -114,7 +123,6 @@ def get_backbone(args):
             "Cut cov5, Train only conv4 of the ResNet-50 pre-trained by MoCo-v1 team, freeze the previous ones")
         layers = list(backbone.children())[:-3]
         backbone = torch.nn.Sequential(*layers)
-
 
     args.features_dim = features_dim  # Number of output features from backbone
     return backbone

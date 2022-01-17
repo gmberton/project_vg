@@ -33,19 +33,19 @@ class NetVLAD(nn.Module):
         self.centroids = nn.Parameter(torch.rand(num_clusters, dim))
 
     def init_params(self, clsts, traindescs):
-            clstsAssign = clsts / np.linalg.norm(clsts, axis=1, keepdims=True)
-            dots = np.dot(clstsAssign, traindescs.T)
-            dots.sort(0)
-            dots = dots[::-1, :]  # sort, descending
+        clstsAssign = clsts / np.linalg.norm(clsts, axis=1, keepdims=True)
+        dots = np.dot(clstsAssign, traindescs.T)
+        dots.sort(0)
+        dots = dots[::-1, :]  # sort, descending
 
-            self.alpha = (-np.log(0.01) /
-                          np.mean(dots[0, :] - dots[1, :])).item()
-            self.centroids = nn.Parameter(torch.from_numpy(clsts))
-            self.conv.weight = nn.Parameter(torch.from_numpy(
-                self.alpha*clstsAssign).unsqueeze(2).unsqueeze(3))
-            self.conv.bias = None
+        self.alpha = (-np.log(0.01) /
+                      np.mean(dots[0, :] - dots[1, :])).item()
+        self.centroids = nn.Parameter(torch.from_numpy(clsts))
+        self.conv.weight = nn.Parameter(torch.from_numpy(
+            self.alpha*clstsAssign).unsqueeze(2).unsqueeze(3))
+        self.conv.bias = None
 
-    def forward(self, x):
+    def forward(self, x, reweight_mask=None):
         N, C = x.shape[:2]
 
         if self.normalize_input:
@@ -54,6 +54,9 @@ class NetVLAD(nn.Module):
         # soft-assignment
         soft_assign = self.conv(x).view(N, self.num_clusters, -1)
         soft_assign = F.softmax(soft_assign, dim=1)
+
+        if reweight_mask is not None:
+            soft_assign = torch.mul(soft_assign, reweight_mask)
 
         x_flatten = x.view(N, C, -1)
 
