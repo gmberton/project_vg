@@ -48,15 +48,25 @@ model = network.GeoLocalizationNet(args)
 model = model.to(args.device)
 
 # Setup Optimizer and Loss
+optimizer_params = {
+    "backbone": {"params": model.backbone.parameters()},
+    "attention": {"params": model.attention.parameters()},
+    "aggregation": {"params": model.aggregation.parameters()},
+}
+
+# CRN attention requires a different LR
+if args.use_attention == "crn":
+    optimizer_params["attention"]['lr'] = args.crn_lr
+
 if args.use_sgd:
     optimizer = torch.optim.SGD(
-        model.parameters(), lr=args.lr, momentum=args.momentum)
+        optimizer_params.values(), lr=args.lr, momentum=args.momentum)
     print("Using SGD")
 elif args.use_adagrad:
-    optimizer = torch.optim.Adagrad(model.parameters(), lr=args.lr)
+    optimizer = torch.optim.Adagrad(optimizer_params.values(), lr=args.lr)
     print("Using Adagrad")
 else:
-    optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
+    optimizer = torch.optim.Adam(optimizer_params.values(), lr=args.lr)
     print("Using Adam")
 
 criterion_triplet = nn.TripletMarginLoss(

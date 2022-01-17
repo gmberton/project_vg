@@ -29,8 +29,11 @@ def parse_arguments():
     parser.add_argument("--gem_eps", type=float, default=0.000001,
                         help="Epsilon for GeM")
 
-    parser.add_argument("--use_crn", type=bool,
-                        help="Specify if CRN layer for attention must be used")
+    parser.add_argument("--use_attention", type=str,
+                        choices=["crn"], help="Specify if an attention layer must be used")
+
+    parser.add_argument("--crn_lr", type=float, default=0.001,
+                        help="Specify the learning rate to use for the attention CRN layer")
 
     parser.add_argument("--use_sgd", type=bool,
                         help="Specify if optimizer sgd must be used")
