@@ -7,3 +7,4 @@ Dataset_st_lucia/st_lucia/
 Dataset_pitts30k/centroids*
 Dataset_st_lucia/centroids*
 .idea
+moco_v1_200ep_pretrain.pth.tar
