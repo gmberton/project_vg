@@ -8,7 +8,7 @@ import numpy as np
 class NetVLAD(nn.Module):
     """NetVLAD layer implementation"""
 
-    def __init__(self, num_clusters=8, dim=256, alpha=100.0,
+    def __init__(self, num_clusters=64, dim=128, alpha=0,
                  normalize_input=True):
         """
         Args:
