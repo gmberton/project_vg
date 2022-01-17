@@ -12,7 +12,7 @@ def parse_arguments():
                         help="Batch size for inference (caching and testing)")
     parser.add_argument("--margin", type=float, default=0.1,
                         help="margin for the triplet loss")
-    parser.add_argument("--epochs_num", type=int, default=50,
+    parser.add_argument("--epochs_num", type=int, default=10,
                         help="Maximum number of epochs to train for")
     parser.add_argument("--patience", type=int, default=3)
     parser.add_argument("--lr", type=float, default=0.00001, help="Learning rate")
