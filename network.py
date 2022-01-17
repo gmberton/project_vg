@@ -63,6 +63,38 @@ def get_backbone(args):
         layers = list(backbone.children())[:-3]
         backbone = torch.nn.Sequential(*layers)
 
+    elif args.backbone == 'alexnet':
+        features_dim = 256
+        backbone = torchvision.models.alexnet(pretrained=True)
+
+        # capture only features and remove last relu and maxpool
+        layers = list(backbone.features.children())[:-2]
+
+        # only train conv5
+        for l in layers[:-1]:
+            for p in l.parameters():
+                p.requires_grad = False
+        logging.debug(
+            "Train only conv5 of the AlexNet, freeze the previous ones")
+
+        backbone = torch.nn.Sequential(*layers)
+
+    elif args.backbone == 'vgg16':
+        features_dim = 512
+        backbone = torchvision.models.vgg16(pretrained=True)
+
+        # capture only features and remove last relu and maxpool
+        layers = list(backbone.features.children())[:-2]
+
+        #  only train conv5_1, conv5_2, and conv5_3
+        for l in layers[:-5]:
+            for p in l.parameters():
+                p.requires_grad = False
+        logging.debug(
+            "Train only conv5_1, conv5_2, conv5_3 of the VGG16, freeze the previous ones")
+
+        backbone = torch.nn.Sequential(*layers)
+
     elif args.backbone == 'resnet50-conv5':
         features_dim = 2048
         backbone = torchvision.models.resnet50(pretrained=True)
