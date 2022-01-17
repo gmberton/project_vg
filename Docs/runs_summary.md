@@ -103,7 +103,7 @@
 | 20         | 64           | greyscale        | 0.00001 | Adam      | 71.6          | [example](/Runs/netvlad_20_64_10e-5_adam_grayscale_test_st_lucia)        |
 | 20         | 64           | color_jitter     | 0.00001 | Adam      | 70.2          | [example](/Runs/netvlad_20_64_10e-5_adam_color_jitter_test_st_lucia)     |
 | 20         | 64           | downscale        | 0.00001 | Adam      | **77.5**      | [example](/Runs/netvlad_20_64_10e-5_adam_downscale_test_st_lucia)        |
-| 20         | 64           | upscale          | 0.00001 | Adam      |               | [example](/Runs/netvlad_20_64_10e-5_adam_upscale_test_st_lucia)          |
+| 20         | 64           | upscale          | 0.00001 | Adam      | 68.6          | [example](/Runs/netvlad_20_64_10e-5_adam_upscale_test_st_lucia)          |
 
 # Personal Contribution
 
