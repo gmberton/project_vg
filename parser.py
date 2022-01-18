@@ -32,11 +32,15 @@ def parse_arguments():
     parser.add_argument("--train_positives_dist_threshold", type=int, default=10, help="Train threshold in meters")
     parser.add_argument('--recall_values', type=int, default=[1, 5, 10, 20], nargs="+",
                         help="Recalls to be computed, such as R@5.")
+
     # Paths parameters
     parser.add_argument("--datasets_folder", type=str, required=True, help="Path with datasets")
     parser.add_argument("--exp_name", type=str, default="default",
                         help="Folder name of the current run (saved in ./runs/)")
     
+    
+    
+    parser.add_argument("--dataset_name", type=str, default="pitts30k", help="Name of the folder of the dataset to use")
     parser.add_argument("--head", type=str, default='default', help="What head would you use; 'GEM' or 'NETVLAD'")
     
     args = parser.parse_args()
