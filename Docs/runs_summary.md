@@ -160,14 +160,14 @@
 | 20         | 0.00001 | x            | Adam      | 0.001  | 76.6          | [example](/Runs/netvlad_20_64_10e-5_adam_crn_0.001_test_st_lucia)            |
 | 20         | 0.00001 | downscale    | Adam      | 0.0001 | 76.6          | [example](/Runs/netvlad_20_64_10e-5_adam_downscale_crn_0.0001_test_st_lucia) |
 
-### NetVLAD CBAM
+### NetVLAD CBAM (to fix)
 
 | Max epochs | LR      | Stopped Early | Augmentation | Optimizer | CRN LR                      | Best R@5 Val | Best R@5 Test | Link                                                           |
 | ---------- | ------- | ------------- | ------------ | --------- | --------------------------- | ------------ | ------------- | -------------------------------------------------------------- |
 | 20         | 0.00001 | Y (9)         | x            | Adam      | 0.001                       | 96.4         | 93.6          | [example](/Runs/netvlad_20_64_10e-5_adam_crn_0.001)            |
 | 20         | 0.00001 | Y (9)         | downscale    | Adam      | 0.0001 (failure with 0.001) | 96.7         | 93.6          | [example](/Runs/netvlad_20_64_10e-5_adam_downscale_crn_0.0001) |
 
-### NetVLAD CBAM on StLucia
+### NetVLAD CBAM on StLucia (to fix)
 
 | Max epochs | LR      | Augmentation | Optimizer | CRN LR | Best R@5 Test | Link                                                                         |
 | ---------- | ------- | ------------ | --------- | ------ | ------------- | ---------------------------------------------------------------------------- |
