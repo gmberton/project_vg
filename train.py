@@ -54,8 +54,8 @@ not_improved_num = 0
 logging.info(f"Output dimension of the model is {args.features_dim}")
 
 # Take cluster for NetVLAD
-if args.type == 'NETVLAD':
-    net_vlad = mdoel.aggregation[1]
+if args.head == 'NETVLAD':
+    net_vlad = model.aggregation[1]
     initcache = join(args.datasets_folder, 'centroids', args.dataset_name + '_' + str(args.num_clusters) + '_desc_cen.hdf5')
 
     if not exists(initcache):
