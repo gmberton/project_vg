@@ -54,7 +54,7 @@ with h5py.File(initcache, mode='w') as h5:
 
         for iteration, (input, indices) in enumerate(data_loader, 1):
             input = input.to(args.device)
-            image_descriptors = model.encoder(input).view(input.size(0), encoder_dim, -1).permute(0, 2, 1)
+            image_descriptors = model(input).view(input.size(0), encoder_dim, -1).permute(0, 2, 1)
 
             batchix = (iteration-1)*args.infer_batch_size*nPerImage
             for ix in range(image_descriptors.size(0)):
