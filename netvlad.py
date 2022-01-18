@@ -32,6 +32,10 @@ class NetVLAD(nn.Module):
             dim, num_clusters, kernel_size=(1, 1), bias=False)
         self.centroids = nn.Parameter(torch.rand(num_clusters, dim))
 
+        # Reweight mask to use for the next forward step
+        # Generated from the the attention layer
+        self.reweight_mask = None
+
     def init_params(self, clsts, traindescs):
         clstsAssign = clsts / np.linalg.norm(clsts, axis=1, keepdims=True)
         dots = np.dot(clstsAssign, traindescs.T)
@@ -45,7 +49,11 @@ class NetVLAD(nn.Module):
             self.alpha*clstsAssign).unsqueeze(2).unsqueeze(3))
         self.conv.bias = None
 
-    def forward(self, x, reweight_mask=None):
+    # Updates the reweight mask to use for the next forward step
+    def set_reweight_mask(self, reweight_mask):
+        self.reweight_mask = reweight_mask
+
+    def forward(self, x):
         N, C = x.shape[:2]
 
         if self.normalize_input:
@@ -55,8 +63,9 @@ class NetVLAD(nn.Module):
         soft_assign = self.conv(x).view(N, self.num_clusters, -1)
         soft_assign = F.softmax(soft_assign, dim=1)
 
-        if reweight_mask is not None:
-            soft_assign = torch.mul(soft_assign, reweight_mask)
+        # apply reweight mask from the attention layer, if any
+        if self.reweight_mask:
+            soft_assign = torch.mul(soft_assign, self.reweight_mask)
 
         x_flatten = x.view(N, C, -1)
 

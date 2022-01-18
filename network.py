@@ -19,16 +19,17 @@ class GeoLocalizationNet(nn.Module):
 
     def __init__(self, args):
         super().__init__()
+        self.args = args
+
         self.backbone = get_backbone(args)
-        self.attention=None
-        
+
+        self.attention = None
         if args.use_attention == "crn":
             self.attention = CRN(args)
 
         if args.use_gem:
             self.aggregation = nn.Sequential(
                 GeM(p=args.gem_p, eps=args.gem_eps), Flatten(), L2Norm())
-
         elif args.use_netvlad:
             initcache = join(args.datasets_folder, 'centroids_' + str(
                 args.netvlad_clusters) + '_' + str(args.backbone) + '_desc_cen.hdf5')
@@ -50,11 +51,12 @@ class GeoLocalizationNet(nn.Module):
     def forward(self, x):
         x = self.backbone(x)
 
-        reweight_mask = None
         if self.attention is not None:
             reweight_mask = self.attention(x)
+            if self.args.use_netvlad:
+                self.aggregation.set_reweight_mask(reweight_mask)
 
-        x = self.aggregation(x, reweight_mask)
+        x = self.aggregation(x)
         return x
 
 
@@ -135,7 +137,8 @@ def get_backbone(args):
     elif args.backbone == 'resnet50moco-conv5':
         features_dim = 2048
         backbone = torchvision.models.resnet50()
-        backbone.load_state_dict(torch.load('moco_v1_200ep_pretrain.pth.tar'),strict=False)
+        backbone.load_state_dict(torch.load(
+            'moco_v1_200ep_pretrain.pth.tar'), strict=False)
         for name, child in backbone.named_children():
             if name == "layer4":
                 break
@@ -149,7 +152,8 @@ def get_backbone(args):
     elif args.backbone == 'resnet50moco-conv4':
         features_dim = 1024
         backbone = torchvision.models.resnet50()
-        backbone.load_state_dict(torch.load('moco_v1_200ep_pretrain.pth.tar'),strict=False)
+        backbone.load_state_dict(torch.load(
+            'moco_v1_200ep_pretrain.pth.tar'), strict=False)
         for name, child in backbone.named_children():
             if name == "layer3":
                 break
