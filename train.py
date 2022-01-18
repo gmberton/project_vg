@@ -9,6 +9,8 @@ import multiprocessing
 from os.path import join
 from datetime import datetime
 from torch.utils.data.dataloader import DataLoader
+from os.path import exists
+import h5py
 torch.backends.cudnn.benchmark= True  # Provides a speedup
 
 import util
