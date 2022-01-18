@@ -111,40 +111,52 @@
 
 ### NetVLAD PC AlexNet train
 
-| Train from | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
-| ---------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
-| 5          | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+| Train from layer | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
+| ---------------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
+| 5                | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
 
 ### NetVLAD PC VGG16 train
 
-| Train from | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
-| ---------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
-| 5          | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+| Train from layer | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
+| ---------------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
+| 5                | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
 
 ### NetVLAD PC ResNet18 train layer 5
 
-| Train from | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
-| ---------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
-| 5          | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+| Train from layer | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
+| ---------------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
+| 5                | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
 
 ### NetVLAD PC ResNet50
 
-| Train from | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
-| ---------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
-| 4          | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
-| 5          | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+| Train from layer | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
+| ---------------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
+| 4                | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+| 5                | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
 
 ### NetVLAD PC ResNet50MoCo
 
-| Train from | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
-| ---------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
-| 4          | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+| Train from layer | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
+| ---------------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
+| 4                | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
 
 ## LR
 
 ### Step LR
 
-### Attention modules
+## Attention modules
+
+### NetVLAD CRN
+
+| Max epochs | LR      | Stopped Early | Optimizer | CRN LR | Best R@5 Val | Best R@5 Test | Link                                 |
+| ---------- | ------- | ------------- | --------- | ------ | ------------ | ------------- | ------------------------------------ |
+| 20         | 0.00001 |               | Adam      | 0.001  |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+
+### NetVLAD CRN on StLucia
+
+| Max epochs | LR      | Augmentation | Optimizer | Best R@5 Test | Link                                                                         |
+| ---------- | ------- | ------------ | --------- | ------------- | ---------------------------------------------------------------------------- |
+| 20         | 0.00001 | downscale    | Adam      | 76.6          | [example](/Runs/netvlad_20_64_10e-5_adam_downscale_crn_0.0001_test_st_lucia) |
 
 # Broken Stuff
 
