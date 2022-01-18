@@ -88,6 +88,9 @@ def parse_arguments():
     parser.add_argument("--test_model_path", type=str,
                         help="Path for the model to use for evaluation")
 
+    parser.add_argument("--save_attention_mask", default=False, type=bool,
+                        help="Specify if the masks used for attention must be saved")
+
     args = parser.parse_args()
 
     if args.queries_per_epoch % args.cache_refresh_rate != 0:
