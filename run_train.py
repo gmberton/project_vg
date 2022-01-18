@@ -57,11 +57,9 @@ if __name__ == "__main__":
 
     if args.use_attention:
         optimizer_params["attention"] = {
-            "params": model.attention.parameters()}
-
-        # CRN attention requires a different LR
-        if args.use_attention == "crn":
-            optimizer_params["attention"]['lr'] = args.crn_lr
+            "params": model.attention.parameters(),
+            "lr": args.attention_lr
+        }
 
     if args.use_sgd:
         optimizer = torch.optim.SGD(

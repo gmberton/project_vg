@@ -49,7 +49,7 @@ class NetVLAD(nn.Module):
             self.alpha*clstsAssign).unsqueeze(2).unsqueeze(3))
         self.conv.bias = None
 
-    # Updates the reweight mask to use for the next forward step
+    # Updates the reweight mask for the CRN attention to use for the next forward step
     def set_reweight_mask(self, reweight_mask):
         self.reweight_mask = reweight_mask
 

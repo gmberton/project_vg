@@ -14,6 +14,8 @@ class CRN(nn.Module):
         super(CRN, self).__init__()
         self.dim = dim
         self.args = args
+        self.last_reweight_mask = None
+
         self.conv3x3 = nn.Sequential(
             nn.Conv2d(dim, 32, 3, device=self.args.device,
                       padding=1, padding_mode="reflect"),
@@ -36,6 +38,9 @@ class CRN(nn.Module):
             nn.ReLU()
         )
 
+    def get_last_attention_mask(self):
+        return self.last_reweight_mask
+
     def forward(self, x):
         downsampled_x = F.interpolate(x, (13, 13))
 
@@ -47,6 +52,9 @@ class CRN(nn.Module):
 
         w_out = self.convw(g_out)
 
-        out = F.interpolate(w_out, x.shape[2:])
+        reweight_mask = F.interpolate(w_out, x.shape[2:])
+        reweight_mask = torch.flatten(reweight_mask, 2)
 
-        return torch.flatten(out, 2)
+        self.last_reweight_mask = reweight_mask
+
+        return reweight_mask

@@ -26,7 +26,8 @@ def test(args, eval_ds, model):
             features = model(inputs.to(args.device))
 
             if args.save_attention_mask:
-                save_attention_mask(inputs, model.aggregation.reweight_mask)
+                save_attention_mask(
+                    inputs, model.attention.get_last_attention_mask())
 
             features = features.cpu().numpy()
             all_features[indices.numpy(), :] = features
