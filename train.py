@@ -53,6 +53,22 @@ not_improved_num = 0
 
 logging.info(f"Output dimension of the model is {args.features_dim}")
 
+# Take cluster for NetVLAD
+if args.type == 'NETVLAD':
+    net_vlad = mdoel.aggregation[1]
+    initcache = join(args.datasets_folder, 'centroids', args.dataset_name + '_' + str(args.num_clusters) + '_desc_cen.hdf5')
+
+    if not exists(initcache):
+        raise FileNotFoundError('Could not find clusters, please run cluster.py before proceeding')
+
+    with h5py.File(initcache, mode='r') as h5: 
+        clsts = h5.get("centroids")[...]
+        traindescs = h5.get("descriptors")[...]
+        net_vlad.init_params(clsts, traindescs) 
+        del clsts, traindescs
+
+    model.model.to(args.device)
+
 #### Training loop
 for epoch_num in range(args.epochs_num):
     logging.info(f"Start training epoch: {epoch_num:02d}")
