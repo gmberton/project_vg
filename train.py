@@ -69,7 +69,7 @@ if args.head == 'NETVLAD':
         net_vlad.init_params(clsts, traindescs) 
         del clsts, traindescs
 
-    model.model.to(args.device)
+    model = model.to(args.device)
 
 #### Training loop
 for epoch_num in range(args.epochs_num):
