@@ -39,8 +39,8 @@ data_loader = DataLoader(dataset=cluster_set,
             num_workers=args.num_workers, batch_size=args.infer_batch_size, shuffle=False, 
             sampler=sampler)
 
-if not exists(join(args.dataset_folder, 'centroids')):
-    makedirs(join(args.dataset_folder, 'centroids'))
+if not exists(join(args.datasets_folder, 'centroids')):
+    makedirs(join(args.datasets_folder, 'centroids'))
 
 
 initcache = join(args.datasets_folder, 'centroids', args.dataset_name + '_' + str(args.num_clusters) + '_desc_cen.hdf5')
