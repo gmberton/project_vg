@@ -35,7 +35,7 @@
 | 20         | 0.00001  | N (20)        | SGD m=0.99 |              |               | [example](/Runs/gem_20_3_10e-6_10e-5_sgd_0.99) |
 | 20         | 0.00001  | N (20)        | Adagrad    | 78.0         | 80.4          | [example](/Runs/gem_20_3_10e-6_10e-5_adagrad)  |
 | 20         | 0.000001 | N (20)        | SGD m=0.9  | 48.9         | 57.4          | [example](/Runs/gem_20_3_10e-6_10e-6_sgd_0.9)  |
-| 20         | 0.000001 | N (20)        | SGD m=0.99 |              |               | [example](/Runs/gem_20_3_10e-6_10e-6_sgd_0.99) |
+| 20         | 0.000001 | N (20)        | SGD m=0.99 | 59.9         | 67.3          | [example](/Runs/gem_20_3_10e-6_10e-6_sgd_0.99) |
 | 20         | 0.000001 | N (20)        | Adagrad    | 52.0         | 60.1          | [example](/Runs/gem_20_3_10e-6_10e-6_adagrad)  |
 
 # Ablation
