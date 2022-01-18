@@ -33,6 +33,8 @@ def parse_arguments():
     parser.add_argument('--recall_values', type=int, default=[1, 5, 10, 20], nargs="+",
                         help="Recalls to be computed, such as R@5.")
 
+    parser.add_argument("--num_clusters", type=int, default=64, help="Number of clusters for the NetVLAD layer")
+
     # Paths parameters
     parser.add_argument("--datasets_folder", type=str, required=True, help="Path with datasets")
     parser.add_argument("--exp_name", type=str, default="default",
