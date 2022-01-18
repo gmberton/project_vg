@@ -49,7 +49,7 @@ def get_backbone(args):
     layers = list(backbone.children())[:-3]
     backbone = torch.nn.Sequential(*layers)
     if args.head == 'NETVLAD':
-        args.features_dim = 16 * 256 # num of NetVLAD clusters * dim  -> as input NetVLAD wants KxD
+        args.features_dim = args.num_clusters * 256 # num of NetVLAD clusters * dim  -> as input NetVLAD wants KxD
     else:
         args.features_dim = 256  # Number of channels in conv4
     return backbone
