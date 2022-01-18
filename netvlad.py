@@ -56,7 +56,7 @@ class NetVLAD(nn.Module):
     def forward(self, x):
         N, C = x.shape[:2]
 
-        if self.normalize_input:
+        if self.normalize_input is not None:
             x = F.normalize(x, p=2, dim=1)  # across descriptor dim
 
         # soft-assignment
@@ -64,7 +64,7 @@ class NetVLAD(nn.Module):
         soft_assign = F.softmax(soft_assign, dim=1)
 
         # apply reweight mask from the attention layer, if any
-        if self.reweight_mask:
+        if self.reweight_mask is not None:
             soft_assign = torch.mul(soft_assign, self.reweight_mask)
 
         x_flatten = x.view(N, C, -1)
