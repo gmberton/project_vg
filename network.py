@@ -1,4 +1,3 @@
-from email.policy import strict
 import torch
 import logging
 import torchvision
@@ -136,9 +135,10 @@ def get_backbone(args):
 
     elif args.backbone == 'resnet50moco-conv5':
         features_dim = 2048
-        backbone = torchvision.models.resnet50()
-        backbone.load_state_dict(torch.load(
-            'moco_v1_200ep_pretrain.pth.tar'), strict=False)
+
+        # Loads the Resnet50 trained by MoCo
+        backbone = load_moco()
+
         for name, child in backbone.named_children():
             if name == "layer4":
                 break
@@ -151,9 +151,10 @@ def get_backbone(args):
 
     elif args.backbone == 'resnet50moco-conv4':
         features_dim = 1024
-        backbone = torchvision.models.resnet50()
-        backbone.load_state_dict(torch.load(
-            'moco_v1_200ep_pretrain.pth.tar'), strict=False)
+
+        # Loads the Resnet50 trained by MoCo
+        backbone = load_moco()
+
         for name, child in backbone.named_children():
             if name == "layer3":
                 break
@@ -165,6 +166,26 @@ def get_backbone(args):
         backbone = torch.nn.Sequential(*layers)
 
     args.features_dim = features_dim  # Number of output features from backbone
+    return backbone
+
+
+def load_moco():
+    moco_dim = 128
+
+    new_moco_state_dict = {}
+    moco_state_dict = torch.load(
+        'moco_v1_200ep_pretrain.pth.tar')["state_dict"]
+
+    for k, v in moco_state_dict.items():
+        if "encoder_q" not in k:
+            continue
+        new_k = k.replace("module.encoder_q.", "")
+        new_moco_state_dict[new_k] = v
+    del moco_state_dict
+
+    backbone = torchvision.models.resnet50(num_classes=moco_dim)
+    backbone.load_state_dict(new_moco_state_dict)
+
     return backbone
 
 
