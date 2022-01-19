@@ -129,17 +129,17 @@
 
 ### NetVLAD PC ResNet50
 
-| Train from layer | Max epochs | LR      | Stopped Early | Augmentation | Optimizer | Best R@5 Val | Best R@5 Test                       | Link                                                     |
-| ---------------- | ---------- | ------- | ------------- | ------------ | --------- | ------------ | ----------------------------------- | -------------------------------------------------------- |
-| 4                | 20         | 0.00001 | Y (5)         | downscale    | Adam      | 96.3         | 92.9                                | [example](/Runs/netvlad_20_64_10e-5_adam_resnet50-conv4) |
-| 5                | 20         | 0.00001 | Y (7)         | x            | Adam      | 92.1         | 88.4 (REDO THIS RUN WITH DOWNSCALE) | [example](/Runs/netvlad_20_64_10e-5_adam_resnet50-conv5) |
+| Train from layer | Max epochs | LR      | Stopped Early | Augmentation | Optimizer | Best R@5 Val | Best R@5 Test                       | Link                                                               |
+| ---------------- | ---------- | ------- | ------------- | ------------ | --------- | ------------ | ----------------------------------- | ------------------------------------------------------------------ |
+| 4                | 20         | 0.00001 | Y (5)         | downscale    | Adam      | 96.3         | 92.9                                | [example](/Runs/netvlad_20_64_10e-5_adam_downscale_resnet50-conv4) |
+| 5                | 20         | 0.00001 | Y (7)         | x            | Adam      | 92.1         | 88.4 (REDO THIS RUN WITH DOWNSCALE) | [example](/Runs/netvlad_20_64_10e-5_adam_resnet50-conv5)           |
 
 ### NetVLAD PC ResNet50MoCo
 
-| Train from layer | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                                         |
-| ---------------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------------------------------ |
-| 4                | 20         | 0.00001 | Y (5)         | Adam      | 95.7         | 92.4          | [example](/Runs/netvlad_20_64_10e-5_adam_resnet50moco-conv4) |
-| 5                | 20         | 0.00001 | Y (5)         | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10)                         |
+| Train from layer | Max epochs | LR      | Stopped Early | Augmentation | Optimizer | Best R@5 Val | Best R@5 Test | Link                                                                   |
+| ---------------- | ---------- | ------- | ------------- | ------------ | --------- | ------------ | ------------- | ---------------------------------------------------------------------- |
+| 4                | 20         | 0.00001 | Y (5)         | downscale    | Adam      | 95.7         | 92.4          | [example](/Runs/netvlad_20_64_10e-5_adam_downscale_resnet50moco-conv4) |
+| 5                | 20         | 0.00001 | Y (8)         | downscale    | Adam      | 92.0         | 89.1          | [example](/Runs/netvlad_20_64_10e-5_adam_downscale_resnet50moco-conv5) |
 
 ## LR
 
