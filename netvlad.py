@@ -4,7 +4,7 @@ import torch.nn.functional as F
 from sklearn.neighbors import NearestNeighbors
 import numpy as np
 
-# based on https://github.com/lyakaap/NetVLAD-pytorch/blob/master/netvlad.py
+# based on https://github.com/Nanne/pytorch-NetVlad/blob/master/netvlad.py
 class NetVLAD(nn.Module):
     """NetVLAD layer implementation"""
 

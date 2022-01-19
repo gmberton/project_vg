@@ -43,7 +43,7 @@ def parse_arguments():
     
     
     parser.add_argument("--dataset_name", type=str, default="pitts30k", help="Name of the folder of the dataset to use")
-    parser.add_argument("--head", type=str, default='default', help="What head would you use; 'GEM' or 'NETVLAD'")
+    parser.add_argument("--type", type=str, default='default', help="What type of network would you use; 'GEM' or 'NETVLAD'")
     
     args = parser.parse_args()
     

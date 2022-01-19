@@ -17,17 +17,18 @@ class GeoLocalizationNet(nn.Module):
         super().__init__()
         self.backbone = get_backbone(args)
         
-        if args.head == 'NETVLAD':
-            #NetVLAD head
-            logging.info("Using NetVlad network")
+        if args.type == 'NETVLAD':
+            #NetVLAD type
+            logging.debug("Using NetVlad network")
             self.aggregation = nn.Sequential(L2Norm(), NetVLAD(dim = 256, num_clusters=args.num_clusters))
-        elif args.head == 'GEM':
-            #GeM head
-            logging.info("Using GeM network")
+        elif args.type == 'GEM':
+            #GeM type
+            logging.debug("Using GeM network")
             self.aggregation = nn.Sequential(L2Norm(), 
                                                 GeM(p = 3), 
                                                 Flatten())
         else:
+            # Average pooling
             self.aggregation = nn.Sequential(L2Norm(),
                                          torch.nn.AdaptiveAvgPool2d(1),
                                          Flatten())
@@ -48,7 +49,7 @@ def get_backbone(args):
     logging.debug("Train only conv4 of the ResNet-18 (remove conv5), freeze the previous ones")
     layers = list(backbone.children())[:-3]
     backbone = torch.nn.Sequential(*layers)
-    if args.head == 'NETVLAD':
+    if args.type == 'NETVLAD':
         args.features_dim = args.num_clusters * 256 # num of NetVLAD clusters * dim  -> as input NetVLAD wants KxD
     else:
         args.features_dim = 256  # Number of channels in conv4

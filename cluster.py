@@ -21,6 +21,10 @@ import netvlad
 import parser
 import datasets_ws
 
+
+# In order to initialise the NetVlad layer we need to first sample from the data and obtain args.num_clusters centroids. 
+# This step is necessary for each configuration of the network and for each dataset. 
+
 args = parser.parse_arguments()
 nDescriptors = 50000
 nPerImage = 100
