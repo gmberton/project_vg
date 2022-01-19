@@ -111,9 +111,9 @@
 
 ### NetVLAD PC AlexNet train
 
-| Train from layer | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
-| ---------------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
-| 5                | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+| Train from layer | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                              |
+| ---------------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------------------- |
+| 5                | 20         | 0.00001 | Y (20)        | Adam      | 93.5         | 90.0          | [example](/Runs/netvlad_20_64_10e-5_adam_alexnet) |
 
 ### NetVLAD PC VGG16 train
 
@@ -136,9 +136,10 @@
 
 ### NetVLAD PC ResNet50MoCo
 
-| Train from layer | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
-| ---------------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
-| 4                | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+| Train from layer | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                                         |
+| ---------------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------------------------------ |
+| 4                | 20         | 0.00001 | Y (5)         | Adam      | 95.7         | 92.4          | [example](/Runs/netvlad_20_64_10e-5_adam_resnet50moco-conv4) |
+| 5                | 20         | 0.00001 | Y (5)         | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10)                         |
 
 ## LR
 
