@@ -33,9 +33,9 @@ start_time = datetime.now()
 # otherwise i change it inside the if condition
 args.output_folder = join("runs", args.exp_name, start_time.strftime('%Y-%m-%d_%H-%M-%S'))
 
+
 if args.colab_folder is not None:
-    # mount my drive; this will ask permission on colab tool
-    drive.mount('/content/drive')
+    logging.debug("Read folder" + args.colab_folder + "inside your drive")
     args.output_folder = 'drive/'+ args.colab_folder
 
     # now i can check if the output folder exist 
