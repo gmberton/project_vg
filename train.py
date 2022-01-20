@@ -86,6 +86,7 @@ criterion_triplet = nn.TripletMarginLoss(margin=args.margin, p=2, reduction="sum
 
 best_r5 = 0
 not_improved_num = 0
+epoch_num = 0
 
 logging.info(f"Output dimension of the model is {args.features_dim}")
 
