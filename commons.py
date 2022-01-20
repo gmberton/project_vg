@@ -28,7 +28,7 @@ def make_deterministic(seed=0):
 
 
 def setup_logging(output_folder, console="debug",
-                  info_filename="info.log", debug_filename="debug.log"):
+                  info_filename="info.log", debug_filename="debug.log", resume=False):
     """Set up logging files and console output.
     Creates one file for INFO logs and one for DEBUG logs.
     Args:
@@ -39,10 +39,12 @@ def setup_logging(output_folder, console="debug",
             if == None does not use console (useful when a logger has already been set)
         info_filename (str): the name of the info file. if None, don't create info file
         debug_filename (str): the name of the debug file. if None, don't create debug file
+        resume (bool): if True it means that I pass a colab folder, so I don't have to create it, otherwise I create it
     """
-    if os.path.exists(output_folder):
-        raise FileExistsError(f"{output_folder} already exists!")
-    os.makedirs(output_folder, exist_ok=True)
+    if not resume:
+        if os.path.exists(output_folder):
+            raise FileExistsError(f"{output_folder} already exists!")
+        os.makedirs(output_folder, exist_ok=True)
     # logging.Logger.manager.loggerDict.keys() to check which loggers are in use
     base_formatter = logging.Formatter('%(asctime)s   %(message)s', "%Y-%m-%d %H:%M:%S")
     logger = logging.getLogger('')
