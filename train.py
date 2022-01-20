@@ -36,7 +36,7 @@ args.output_folder = join("runs", args.exp_name, start_time.strftime('%Y-%m-%d_%
 
 if args.colab_folder is not None:
     logging.debug("Read folder" + args.colab_folder + "inside your drive")
-    args.output_folder = 'drive/'+ args.colab_folder
+    args.output_folder = 'drive/MyDrive/'+ args.colab_folder
 
     # now i can check if the output folder exist 
     # in this case I resume the old train
