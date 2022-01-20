@@ -34,6 +34,7 @@ start_time = datetime.now()
 # otherwise i change it inside the if condition
 args.output_folder = join("runs", args.exp_name, start_time.strftime('%Y-%m-%d_%H-%M-%S'))
 colab = False
+found_last_model = False
 
 if args.colab_folder is not None:
     colab = True
