@@ -45,6 +45,8 @@ if args.colab_folder is not None:
         files = os.listdir(args.output_folder)
         for f in files:
             print(f)
+    else:
+        os.mkdir(args.output_folder)
 
 
         # in this case I write on them
