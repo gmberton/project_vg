@@ -52,13 +52,15 @@ if args.colab_folder is not None:
         # in this case I write on them
 
     # otherwise I create the folder and begin a new train
+else: 
+    #TODO: Ristrutturare la funzione e separare creazione cartella dalla creazione dei log
+    commons.setup_logging(args.output_folder)
 
 
 
 
 
 
-commons.setup_logging(args.output_folder)
 commons.make_deterministic(args.seed)
 logging.info(f"Arguments: {args}")
 logging.info(f"The outputs are being saved in {args.output_folder}")
