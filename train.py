@@ -20,10 +20,42 @@ import commons
 import network
 import datasets_ws
 
+from google.colab import drive 
+import os
+
+
+
 #### Initial setup: parser, logging...
 args = parser.parse_arguments()
 start_time = datetime.now()
+
+# If the user doesn't insert a colab folder, I keep the default folder for output
+# otherwise i change it inside the if condition
 args.output_folder = join("runs", args.exp_name, start_time.strftime('%Y-%m-%d_%H-%M-%S'))
+
+if args.colab_folder is not None:
+    # mount my drive; this will ask permission on colab tool
+    drive.mount('/content/drive')
+    args.output_folder = 'drive/'+ args.colab_folder
+
+    # now i can check if the output folder exist 
+    # in this case I resume the old train
+    if os.path.isdir(args.output_folder):
+        #check if my file exists
+        files = os.listdir(args.output_folder)
+        for f in files:
+            print(f)
+
+
+        # in this case I write on them
+
+    # otherwise I create the folder and begin a new train
+
+
+
+
+
+
 commons.setup_logging(args.output_folder)
 commons.make_deterministic(args.seed)
 logging.info(f"Arguments: {args}")

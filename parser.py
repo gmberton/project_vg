@@ -45,6 +45,8 @@ def parse_arguments():
     parser.add_argument("--dataset_name", type=str, default="pitts30k", help="Name of the folder of the dataset to use")
     parser.add_argument("--type", type=str, default='default', help="What type of network would you use; 'GEM' or 'NETVLAD'")
     
+    parser.add_argument("--colab_folder", type=str, default=None, help="In what folder you want to save the output of train.py")
+    
     args = parser.parse_args()
     
     if args.queries_per_epoch % args.cache_refresh_rate != 0:
