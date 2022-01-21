@@ -1,0 +1,48 @@
+2022-01-20 22:02:53   Arguments: Namespace(upscale_input=False, downscale_input=False, augment_input='None', backbone='resnet18', use_netvlad=True, netvlad_clusters=64, use_gem=None, gem_p=3, gem_eps=1e-06, use_attention='cbam', attention_lr=0.001, use_sgd=None, use_adagrad=None, momentum=0.9, train_batch_size=4, infer_batch_size=16, margin=0.1, epochs_num=5, patience=3, lr=1e-05, cache_refresh_rate=1000, queries_per_epoch=5000, negs_num_per_query=10, neg_samples_num=1000, seed=0, device='cpu', num_workers=8, val_positive_dist_threshold=25, train_positives_dist_threshold=10, recall_values=[1, 5, 10, 20], datasets_folder='Dataset_pitts30k', exp_name='default', test_dataset_name='pitts30k', test_model_path='./runs/default/2022-01-20_18-36-54/best_model.pth', save_attention_mask=True, output_folder='test_runs/default/2022-01-20_22-02-53')
+2022-01-20 22:02:53   The outputs are being saved in test_runs/default/2022-01-20_22-02-53
+2022-01-20 22:02:53   Using 1 GPUs and 12 CPUs
+2022-01-20 22:02:53   Test set: < BaseDataset, pitts30k - #database: 10000; #queries: 6816 >
+2022-01-20 22:05:57   
+Traceback (most recent call last):
+  File "/home/franzhd/Aml_project/project_vg/run_test.py", line 46, in <module>
+    recalls, recalls_str = test.test(args, test_ds, model)
+  File "/home/franzhd/Aml_project/project_vg/test.py", line 29, in test
+    save_attention_mask(
+  File "/home/franzhd/Aml_project/project_vg/util.py", line 43, in save_attention_mask
+    plt.show()
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/pyplot.py", line 368, in show
+    return _backend_mod.show(*args, **kwargs)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/backend_bases.py", line 3524, in show
+    manager.show()  # Emits a warning for non-interactive backend.
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/backends/backend_gtk4.py", line 341, in show
+    self.canvas.draw()
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/backends/backend_gtk4agg.py", line 43, in draw
+    backend_agg.FigureCanvasAgg.draw(self)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/backends/backend_agg.py", line 436, in draw
+    self.figure.draw(self.renderer)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/artist.py", line 73, in draw_wrapper
+    result = draw(artist, renderer, *args, **kwargs)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/artist.py", line 50, in draw_wrapper
+    return draw(artist, renderer)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/figure.py", line 2810, in draw
+    mimage._draw_list_compositing_images(
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/image.py", line 132, in _draw_list_compositing_images
+    a.draw(renderer)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/artist.py", line 50, in draw_wrapper
+    return draw(artist, renderer)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/axes/_base.py", line 3082, in draw
+    mimage._draw_list_compositing_images(
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/image.py", line 132, in _draw_list_compositing_images
+    a.draw(renderer)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/artist.py", line 50, in draw_wrapper
+    return draw(artist, renderer)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/image.py", line 646, in draw
+    im, l, b, trans = self.make_image(
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/image.py", line 956, in make_image
+    return self._make_image(self._A, bbox, transformed_bbox, clip,
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/image.py", line 557, in _make_image
+    output = _resample(  # resample rgb channels
+  File "/home/franzhd/.local/lib/python3.9/site-packages/matplotlib/image.py", line 193, in _resample
+    _image.resample(data, out, transform,
+KeyboardInterrupt
+

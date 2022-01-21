@@ -28,6 +28,7 @@ class GeoLocalizationNet(nn.Module):
             self.attention = CRN(args)
         elif args.use_attention == "cbam":
             self.attention = CBAMBlock(channel=args.features_dim)
+            self.attention.init_weights()
 
         if args.use_gem:
             self.aggregation = nn.Sequential(

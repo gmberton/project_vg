@@ -1,0 +1,14 @@
+2022-01-20 18:14:56   Arguments: Namespace(upscale_input=False, downscale_input=False, augment_input='None', backbone='resnet18', use_netvlad=True, netvlad_clusters=64, use_gem=None, gem_p=3, gem_eps=1e-06, use_attention='cbam', attention_lr=0.001, use_sgd=None, use_adagrad=None, momentum=0.9, train_batch_size=4, infer_batch_size=16, margin=0.1, epochs_num=5, patience=3, lr=1e-05, cache_refresh_rate=1000, queries_per_epoch=5000, negs_num_per_query=10, neg_samples_num=1000, seed=0, device='cpu', num_workers=8, val_positive_dist_threshold=25, train_positives_dist_threshold=10, recall_values=[1, 5, 10, 20], datasets_folder='Dataset_pitts30k', exp_name='default', test_dataset_name='pitts30k', test_model_path='./runs/default/2022-01-20_17-11-19/best_model.pth', save_attention_mask=True, output_folder='test_runs/default/2022-01-20_18-14-56')
+2022-01-20 18:14:56   The outputs are being saved in test_runs/default/2022-01-20_18-14-56
+2022-01-20 18:14:56   Using 1 GPUs and 12 CPUs
+2022-01-20 18:14:56   Test set: < BaseDataset, pitts30k - #database: 10000; #queries: 6816 >
+2022-01-20 18:14:58   
+Traceback (most recent call last):
+  File "/home/franzhd/Aml_project/project_vg/run_test.py", line 46, in <module>
+    recalls, recalls_str = test.test(args, test_ds, model)
+  File "/home/franzhd/Aml_project/project_vg/test.py", line 29, in test
+    save_attention_mask(
+  File "/home/franzhd/Aml_project/project_vg/util.py", line 35, in save_attention_mask
+    mask = masks[i].reshape(mask_H, mask_W)
+RuntimeError: shape '[30, 40]' is invalid for input of size 307200
+

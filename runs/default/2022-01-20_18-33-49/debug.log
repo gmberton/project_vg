@@ -1,0 +1,27 @@
+2022-01-20 18:33:49   Arguments: Namespace(upscale_input=False, downscale_input=False, augment_input='None', backbone='resnet18', use_netvlad=True, netvlad_clusters=64, use_gem=None, gem_p=3, gem_eps=1e-06, use_attention='cbam', attention_lr=0.01, use_sgd=None, use_adagrad=None, momentum=0.9, train_batch_size=4, infer_batch_size=16, margin=0.1, epochs_num=20, patience=3, lr=1e-05, cache_refresh_rate=1000, queries_per_epoch=5000, negs_num_per_query=10, neg_samples_num=1000, seed=0, device='cuda', num_workers=8, val_positive_dist_threshold=25, train_positives_dist_threshold=10, recall_values=[1, 5, 10, 20], datasets_folder='./Dataset_pitts30k', exp_name='default', test_dataset_name=None, test_model_path=None, save_attention_mask=None, output_folder='runs/default/2022-01-20_18-33-49')
+2022-01-20 18:33:49   The outputs are being saved in runs/default/2022-01-20_18-33-49
+2022-01-20 18:33:49   Using 1 GPUs and 12 CPUs
+2022-01-20 18:33:49   Loading dataset Pitts30k from folder ./Dataset_pitts30k
+2022-01-20 18:33:50   There are 96 queries without any positives within the training set. They won't be considered as they're useless for training.
+2022-01-20 18:33:50   Train query set: < TripletsDataset, pitts30k - #database: 10000; #queries: 7320 >
+2022-01-20 18:33:50   Val set: < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >
+2022-01-20 18:33:50   Test set: < BaseDataset, pitts30k - #database: 10000; #queries: 6816 >
+2022-01-20 18:33:50   Train only conv4 of the ResNet-18 (remove conv5), freeze the previous ones
+2022-01-20 18:33:52   
+Traceback (most recent call last):
+  File "/home/franzhd/Aml_project/project_vg/run_train.py", line 50, in <module>
+    model = model.to(args.device)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 899, in to
+    return self._apply(convert)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 570, in _apply
+    module._apply(fn)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 570, in _apply
+    module._apply(fn)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 593, in _apply
+    param_applied = fn(param)
+  File "/home/franzhd/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 897, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+RuntimeError: CUDA error: out of memory
+CUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1.
+

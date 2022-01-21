@@ -166,7 +166,7 @@ if __name__ == "__main__":
                 logging.info(
                     f"Performance did not improve for {not_improved_num} epochs. Stop training.")
                 break
-
+    torch.cuda.empty_cache()
     logging.info(f"Best R@5: {best_r5:.1f}")
     logging.info(
         f"Trained for {epoch_num+1:02d} epochs, in total in {str(datetime.now() - start_time)[:-7]}")

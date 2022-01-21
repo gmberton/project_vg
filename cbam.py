@@ -75,6 +75,6 @@ class CBAMBlock(nn.Module):
         sa_mask = self.sa(out)
         out = out*sa_mask
 
-        self.last_attention_mask = sa_mask*ca_mask
+        self.last_attention_mask = sa_mask
 
         return out+residual

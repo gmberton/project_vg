@@ -1,0 +1,65 @@
+2022-01-20 17:11:19   Arguments: Namespace(upscale_input=False, downscale_input=False, augment_input='None', backbone='resnet18', use_netvlad=True, netvlad_clusters=64, use_gem=None, gem_p=3, gem_eps=1e-06, use_attention='cbam', attention_lr=0.01, use_sgd=None, use_adagrad=None, momentum=0.9, train_batch_size=4, infer_batch_size=16, margin=0.1, epochs_num=20, patience=3, lr=1e-05, cache_refresh_rate=1000, queries_per_epoch=5000, negs_num_per_query=10, neg_samples_num=1000, seed=0, device='cuda', num_workers=10, val_positive_dist_threshold=25, train_positives_dist_threshold=10, recall_values=[1, 5, 10, 20], datasets_folder='./Dataset_pitts30k', exp_name='default', test_dataset_name=None, test_model_path=None, save_attention_mask=None, output_folder='runs/default/2022-01-20_17-11-19')
+2022-01-20 17:11:19   The outputs are being saved in runs/default/2022-01-20_17-11-19
+2022-01-20 17:11:19   Using 1 GPUs and 12 CPUs
+2022-01-20 17:11:19   Loading dataset Pitts30k from folder ./Dataset_pitts30k
+2022-01-20 17:11:19   There are 96 queries without any positives within the training set. They won't be considered as they're useless for training.
+2022-01-20 17:11:19   Train query set: < TripletsDataset, pitts30k - #database: 10000; #queries: 7320 >
+2022-01-20 17:11:20   Val set: < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >
+2022-01-20 17:11:20   Test set: < BaseDataset, pitts30k - #database: 10000; #queries: 6816 >
+2022-01-20 17:11:20   Train only conv4 of the ResNet-18 (remove conv5), freeze the previous ones
+2022-01-20 17:11:26   Output dimension of the model is 16384
+2022-01-20 17:11:26   Start training epoch: 00
+2022-01-20 17:11:26   Cache: 0 / 5
+2022-01-20 17:14:27   Epoch[00](0/5): current batch triplet loss = 0.0312, average epoch triplet loss = 0.0320
+2022-01-20 17:14:27   Cache: 1 / 5
+2022-01-20 17:17:38   Epoch[00](1/5): current batch triplet loss = 0.0399, average epoch triplet loss = 0.0304
+2022-01-20 17:17:38   Cache: 2 / 5
+2022-01-20 17:21:05   Epoch[00](2/5): current batch triplet loss = 0.0133, average epoch triplet loss = 0.0290
+2022-01-20 17:21:05   Cache: 3 / 5
+2022-01-20 17:24:17   Epoch[00](3/5): current batch triplet loss = 0.0370, average epoch triplet loss = 0.0280
+2022-01-20 17:24:17   Cache: 4 / 5
+2022-01-20 17:27:29   Epoch[00](4/5): current batch triplet loss = 0.0358, average epoch triplet loss = 0.0275
+2022-01-20 17:27:29   Finished epoch 00 in 0:16:03, average epoch triplet loss = 0.0275
+2022-01-20 17:27:29   Extracting database features for evaluation/testing
+2022-01-20 17:28:46   Extracting queries features for evaluation/testing
+2022-01-20 17:29:33   Calculating recalls
+2022-01-20 17:29:57   Recalls on val set < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >: R@1: 86.9, R@5: 95.1, R@10: 97.1, R@20: 98.2
+2022-01-20 17:29:57   Improved: previous best R@5 = 0.0, current R@5 = 95.1
+2022-01-20 17:29:57   Start training epoch: 01
+2022-01-20 17:29:57   Cache: 0 / 5
+2022-01-20 17:33:11   Epoch[01](0/5): current batch triplet loss = 0.0476, average epoch triplet loss = 0.0260
+2022-01-20 17:33:11   Cache: 1 / 5
+2022-01-20 17:36:19   Epoch[01](1/5): current batch triplet loss = 0.0261, average epoch triplet loss = 0.0257
+2022-01-20 17:36:19   Cache: 2 / 5
+2022-01-20 17:39:33   Epoch[01](2/5): current batch triplet loss = 0.0370, average epoch triplet loss = 0.0250
+2022-01-20 17:39:33   Cache: 3 / 5
+2022-01-20 17:42:41   Epoch[01](3/5): current batch triplet loss = 0.0291, average epoch triplet loss = 0.0248
+2022-01-20 17:42:41   Cache: 4 / 5
+2022-01-20 17:46:06   Epoch[01](4/5): current batch triplet loss = 0.0454, average epoch triplet loss = 0.0247
+2022-01-20 17:46:06   Finished epoch 01 in 0:16:08, average epoch triplet loss = 0.0247
+2022-01-20 17:46:06   Extracting database features for evaluation/testing
+2022-01-20 17:47:26   Extracting queries features for evaluation/testing
+2022-01-20 17:48:33   Calculating recalls
+2022-01-20 17:48:59   Recalls on val set < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >: R@1: 87.5, R@5: 95.6, R@10: 97.3, R@20: 98.4
+2022-01-20 17:48:59   Improved: previous best R@5 = 95.1, current R@5 = 95.6
+2022-01-20 17:48:59   Start training epoch: 02
+2022-01-20 17:48:59   Cache: 0 / 5
+2022-01-20 17:52:10   Epoch[02](0/5): current batch triplet loss = 0.0151, average epoch triplet loss = 0.0218
+2022-01-20 17:52:10   Cache: 1 / 5
+2022-01-20 17:55:20   Epoch[02](1/5): current batch triplet loss = 0.0086, average epoch triplet loss = 0.0220
+2022-01-20 17:55:20   Cache: 2 / 5
+2022-01-20 17:58:32   Epoch[02](2/5): current batch triplet loss = 0.0097, average epoch triplet loss = 0.0217
+2022-01-20 17:58:32   Cache: 3 / 5
+2022-01-20 18:01:43   Epoch[02](3/5): current batch triplet loss = 0.0123, average epoch triplet loss = 0.0212
+2022-01-20 18:01:43   Cache: 4 / 5
+2022-01-20 18:04:55   Epoch[02](4/5): current batch triplet loss = 0.0073, average epoch triplet loss = 0.0210
+2022-01-20 18:04:55   Finished epoch 02 in 0:15:55, average epoch triplet loss = 0.0210
+2022-01-20 18:04:55   Extracting database features for evaluation/testing
+2022-01-20 18:06:15   Extracting queries features for evaluation/testing
+2022-01-20 18:07:23   Calculating recalls
+2022-01-20 18:07:45   Recalls on val set < BaseDataset, pitts30k - #database: 10000; #queries: 7608 >: R@1: 87.9, R@5: 95.8, R@10: 97.6, R@20: 98.4
+2022-01-20 18:07:45   Improved: previous best R@5 = 95.6, current R@5 = 95.8
+2022-01-20 18:07:45   Start training epoch: 03
+2022-01-20 18:07:45   Cache: 0 / 5
+2022-01-20 18:10:58   Epoch[03](0/5): current batch triplet loss = 0.0041, average epoch triplet loss = 0.0182
+2022-01-20 18:10:58   Cache: 1 / 5
