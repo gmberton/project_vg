@@ -50,8 +50,8 @@
 | NetVLAD | 20         | netvlad_clusters=64 | 0.00001  | Adagrad    | 70.6          | [example](/Runs/netvlad_20_64_10e-5_adagrad_test_st_lucia)  |
 | NetVLAD | 20         | netvlad_clusters=64 | 0.00001  | SGD m=0.99 | 72.3          | [example](/Runs/netvlad_20_64_10e-5_sgd_0.99_test_st_lucia) |
 | GeM     | 20         | p=3, eps=10^-6      | 0.000001 | Adam       | 64.5          | [example](/Runs/gem_20_3_10e-6_10e-6_adam_test_st_lucia)    |
-| GeM     | 20         | p=3, eps=10^-6      | 0.000001 | Adagrad    |               |                                                             |
-| GeM     | 20         | p=3, eps=10^-6      | 0.000001 | SGD m=0.99 |               |                                                             |
+| GeM     | 20         | p=3, eps=10^-6      | 0.000001 | Adagrad    | 53.2          |                                                             |
+| GeM     | 20         | p=3, eps=10^-6      | 0.000001 | SGD m=0.99 | 58.4          |                                                             |
 
 ## train_positives_dist_threshold and val_positive_dist_threshold tests
 
@@ -117,29 +117,21 @@
 
 ### NetVLAD PC VGG16 train
 
-| Train from layer | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
-| ---------------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
-| 5                | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
-
-### NetVLAD PC ResNet18 train layer 5
-
-| Train from layer | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                 |
-| ---------------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ------------------------------------ |
-| 5                | 20         | 0.00001 |               | Adam      |              |               | [example](/Runs/GeM_p_3_lr_10e-6_10) |
+| Train from layer | Max epochs | LR      | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                            |
+| ---------------- | ---------- | ------- | ------------- | --------- | ------------ | ------------- | ----------------------------------------------- |
+| 5                | 20         | 0.00001 | Y (9)         | Adam      | 96.2         | 92.4          | [example](/Runs/netvlad_20_64_10e-5_adam_vgg16) |
 
 ### NetVLAD PC ResNet50
 
-| Train from layer | Max epochs | LR      | Stopped Early | Augmentation | Optimizer | Best R@5 Val | Best R@5 Test                       | Link                                                               |
-| ---------------- | ---------- | ------- | ------------- | ------------ | --------- | ------------ | ----------------------------------- | ------------------------------------------------------------------ |
-| 4                | 20         | 0.00001 | Y (5)         | downscale    | Adam      | 96.3         | 92.9                                | [example](/Runs/netvlad_20_64_10e-5_adam_downscale_resnet50-conv4) |
-| 5                | 20         | 0.00001 | Y (7)         | x            | Adam      | 92.1         | 88.4 (REDO THIS RUN WITH DOWNSCALE) | [example](/Runs/netvlad_20_64_10e-5_adam_resnet50-conv5)           |
+| Train from layer | Max epochs | LR      | Stopped Early | Augmentation | Optimizer | Best R@5 Val | Best R@5 Test | Link                                                     |
+| ---------------- | ---------- | ------- | ------------- | ------------ | --------- | ------------ | ------------- | -------------------------------------------------------- |
+| 4                | 20         | 0.00001 | Y (5)         | x            | Adam      | 96.8         | 92.9          | [example](/Runs/netvlad_20_64_10e-5_adam_resnet50-conv4) |
 
 ### NetVLAD PC ResNet50MoCo
 
 | Train from layer | Max epochs | LR      | Stopped Early | Augmentation | Optimizer | Best R@5 Val | Best R@5 Test | Link                                                                   |
 | ---------------- | ---------- | ------- | ------------- | ------------ | --------- | ------------ | ------------- | ---------------------------------------------------------------------- |
-| 4                | 20         | 0.00001 | Y (5)         | downscale    | Adam      | 95.7         | 92.4          | [example](/Runs/netvlad_20_64_10e-5_adam_downscale_resnet50moco-conv4) |
-| 5                | 20         | 0.00001 | Y (8)         | downscale    | Adam      | 92.0         | 89.1          | [example](/Runs/netvlad_20_64_10e-5_adam_downscale_resnet50moco-conv5) |
+| 4                | 20         | 0.00001 | Y (5)         | x            | Adam      | 95.7         | 92.4          | [example](/Runs/netvlad_20_64_10e-5_adam_downscale_resnet50moco-conv4) |
 
 ## LR
 
@@ -156,10 +148,11 @@
 
 ### NetVLAD CRN on StLucia
 
-| Max epochs | LR      | Augmentation | Optimizer | CRN LR | Best R@5 Test | Link                                                                         |
-| ---------- | ------- | ------------ | --------- | ------ | ------------- | ---------------------------------------------------------------------------- |
-| 20         | 0.00001 | x            | Adam      | 0.001  | 77.0          | [example](/Runs/netvlad_20_64_10e-5_adam_crn_0.001_test_st_lucia)            |
-| 20         | 0.00001 | downscale    | Adam      | 0.0001 | 76.6          | [example](/Runs/netvlad_20_64_10e-5_adam_downscale_crn_0.0001_test_st_lucia) |
+| Max epochs | LR      | Augmentation train | Augmentation test | Optimizer | CRN LR | Best R@5 Test | Link                                                                                        |
+| ---------- | ------- | ------------------ | ----------------- | --------- | ------ | ------------- | ------------------------------------------------------------------------------------------- |
+| 20         | 0.00001 | x                  | x                 | Adam      | 0.001  | 77.0          | [example](/Runs/netvlad_20_64_10e-5_adam_crn_0.001_test_st_lucia)                           |
+| 20         | 0.00001 | x                  | downscale         | Adam      | 0.001  | 78.8          | [example](/Runs/netvlad_20_64_10e-5_adam_crn_0.001_train_default_test_downscale_st_lucia)   |
+| 20         | 0.00001 | downscale          | downscale         | Adam      | 0.001  | 81.1          | [example](/Runs/netvlad_20_64_10e-5_adam_crn_0.001_train_downscale_test_downscale_st_lucia) |
 
 ### NetVLAD CBAM (to fix)
 
@@ -174,25 +167,3 @@
 | ---------- | ------- | ------------ | --------- | ------- | ------------- | ---------------------------------------------------------------------------- |
 | 20         | 0.00001 | x            | Adam      | 0.001   | 76.6          | [example](/Runs/netvlad_20_64_10e-5_adam_cbam_0.001_test_st_lucia)           |
 | 20         | 0.00001 | downscale    | Adam      | 0.0001  | 76.6          | [example](/Runs/netvlad_20_64_10e-5_adam_downscale_crn_0.0001_test_st_lucia) |
-
-# Broken Stuff
-
-### NetVLAD BROKEN
-
-| Max epochs | Num Clusters | LR       | Stopped Early | Optimizer  | Best R@5 Val | Best R@5 Test | Link                                       |
-| ---------- | ------------ | -------- | ------------- | ---------- | ------------ | ------------- | ------------------------------------------ |
-| 10         | 64           | 0.000001 | N (10)        | Adam       | **78.8**     | 77.5          | [example](/Runs/netvlad_10_0.000001_64)    |
-| 10         | 64           | 0.00001  | Y (8)         | Adam       | 78.1         | **77.6**      | [example](/Runs/netvlad_10_0.00001_64)     |
-| 10         | 64           | 0.0001   | N (10)        | Adam       | 76.2         | 75.2          | [example](/Runs/netvlad_10_0.0001_64)      |
-| 10         | 64           | 0.00001  | Y (4)         | SGD m=0.9  | 38.4         | 46.4          | [example](/Runs/netvlad_sgd_m_0.9_epoc_10) |
-| 10         | 64           | 0.00001  | N (10)        | SGD m=0.99 | 43.7         | 52.8          | [example](/Runs/nevlad_sgd_m_0.99_epoc_10) |
-| 10         | 64           | 0.00001  | N (10)        | Adagrad    | 60.7         | 67.0          | [example](/Runs/netvlad_adagrad_std_10)    |
-
-### GeM BROKEN
-
-| Max epochs | LR       | Stopped Early | Optimizer | Best R@5 Val | Best R@5 Test | Link                                             |
-| ---------- | -------- | ------------- | --------- | ------------ | ------------- | ------------------------------------------------ |
-| 10         | 0.000001 | N (10)        | Adam      | 79.6         | 77.9          | [example](/Runs/GeM_p_3_lr_10e-6_10)             |
-| 10         | 0.00001  | Y (8)         | Adam      | **81.0**     | **80.6**      | [example](/Runs/GeM_p_3_lr_10e-5_10)             |
-| 10         | 0.00001  | N (10)        | SGD m=0.9 | 43.0         | 52.3          | [example](/Runs/GeM_p_3_sgd_m_0.9_lr_10e-5_10)   |
-| 10         | 0.00001  | N (10)        | Adagrad   | 61.3         | 67.3          | [example](/Runs/GeM_p_3_adagrad_std_lr_10e-5_10) |
